@@ -20,6 +20,7 @@ import { ExampleDataViz } from './components/pages/ExampleDataViz';
 import { config } from './utils/oktaConfig';
 import { LoadingComponent } from './components/common';
 import { ChooseUser } from './components/pages/ChooseUser';
+import { ParentDashboard } from './components/pages/ParentDashboard';
 
 ReactDOM.render(
   <Router>
@@ -56,6 +57,7 @@ function App() {
         <SecureRoute path="/example-list" component={ExampleListPage} />
         <SecureRoute path="/profile-list" component={ProfileListPage} />
         <SecureRoute path="/datavis" component={ExampleDataViz} />
+        <SecureRoute path="/parent-dashboard" component={ParentDashboard} />
         <Route component={NotFoundPage} />
       </Switch>
     </Security>

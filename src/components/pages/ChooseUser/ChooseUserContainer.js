@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../../common/Header.js';
+import { Header } from '../../common';
 import RenderChooseUser from './RenderChooseUser.js';
 
 const ChooseUserContainer = () => {
