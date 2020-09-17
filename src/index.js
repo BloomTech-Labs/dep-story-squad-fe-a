@@ -14,11 +14,13 @@ import { NotFoundPage } from './components/pages/NotFound';
 import { ExampleListPage } from './components/pages/ExampleList';
 import { ProfileListPage } from './components/pages/ProfileList';
 import { LoginPage } from './components/pages/Login';
-import { HomePage } from './components/pages/Home';
 import { LandingPage } from './components/pages/Landing';
 import { ExampleDataViz } from './components/pages/ExampleDataViz';
 import { config } from './utils/oktaConfig';
 import { LoadingComponent } from './components/common';
+import { ChooseUser } from './components/pages/ChooseUser';
+import { ParentDashboard } from './components/pages/ParentDashboard';
+import { ChildDashboard } from './components/pages/ChildDashboard';
 
 ReactDOM.render(
   <Router>
@@ -50,11 +52,13 @@ function App() {
         <SecureRoute
           path="/"
           exact
-          component={() => <HomePage LoadingComponent={LoadingComponent} />}
+          component={() => <ChooseUser LoadingComponent={LoadingComponent} />}
         />
         <SecureRoute path="/example-list" component={ExampleListPage} />
         <SecureRoute path="/profile-list" component={ProfileListPage} />
         <SecureRoute path="/datavis" component={ExampleDataViz} />
+        <SecureRoute path="/parent-dashboard" component={ParentDashboard} />
+        <SecureRoute path="/child-dashboard" component={ChildDashboard} />
         <Route component={NotFoundPage} />
       </Switch>
     </Security>
