@@ -1,92 +1,189 @@
-# Basic SPA
 
-For steps on how to work with this repository [please see here](https://docs.labs.lambdaschool.com/labs-spa-starter/)
+# Story Squad
 
-🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your first Pull-Request is merged. This is intended to be a guideline. Feel free to add your own flare to it.
-
-# Title of project goes here
-
-You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
+We deployed our project using [AWS Amplify](https://a.storysquad.dev/).
 
 ## Contributors
 
-🚫Add contributor info below, make sure add images and edit the social links for each member. Add to or delete these place-holders as needed
 
-|                                                      [Student 1](https://github.com/)                                                       |                                                       [Student 2](https://github.com/)                                                        |                                                      [Student 3](https://github.com/)                                                       |                                                       [Student 4](https://github.com/)                                                        |                                                      [Student 5](https://github.com/)                                                       |
-| :-----------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------: |
-| [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/) |
-|                                [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)                                |                            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/honda0306)                             |                          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Mister-Corn)                           |                          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/NandoTheessen)                           |                           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/wvandolah)                            |
-|                [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                |                 [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                 |                [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                |                 [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                 |                [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                |
+| [Brian Russell](https://github.com/Mr-Russell) | [Sone Thaya](https://github.com/SoneThaya) |
+| :--------------------------------------------: | :----------------------------------------: | 
+| [<img src="https://avatars0.githubusercontent.com/u/49926177?s=400&u=0caf0289f519b0b6c5b625899289cf59fb71849e&v=4" width = "200" />](https://github.com/Mr-Russell) | [<img src="https://avatars3.githubusercontent.com/u/17104828?s=400&u=95a7a877c29b5bcd1a7b20fb9301ca417df484e5&v=4" width = "200" />](https://github.com/SoneThaya) | 
+| [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Mr-Russell) | [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/SoneThaya) |
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/brian-edward-russell/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/sone-thaya/) | 
 
 <br>
 <br>
 
-🚫 Optional examples of using images with links for your tech stack, make sure to change these to fit your project
+
 
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
-![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
-![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)
+![React](https://img.shields.io/badge/react-v16.13.1-blue.svg)
+![Javascript](https://img.shields.io/badge/JavaScript-ES6-blue)
+[![Netlify Status](https://img.shields.io/badge/AWS-Amplify-yellow)](https://a.storysquad.dev/)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-🚫 more info on using badges [here](https://github.com/badges/shields)
 
-- Fork and clone the repo to install it as your own remote.
-  - **note** please [be sure to set your remote](https://help.github.jp/enterprise/2.11/user/articles/changing-a-remote-s-url/) for this repo to point to your Labs Team Front End Repository.
-- run: `npm install` to download all dependencies.
-- run: `npm start` to start your local development server.
+## Project Overview
 
-> When using Okta for authentication, the app will need to run locally on port 3000.
+[Trello Board](https://trello.com/b/ZKcMrW3P/story-squad-a-jean)
+
+[Product Canvas](https://www.notion.so/Story-Squad-Roadmap-2682f21ae48b420cbb0caafa3f500b5e)
+
+[UX Design files](https://www.figma.com/file/WaHXdLK2NASoFWYVMZLVNt/Story_Squad?node-id=57%3A8)
+
+
+Welcome to Story Squad! We are an interactive learning platform targeted at grade school children, and we help build reading comprehension as well as artistic, writing, and analytical/critical thinking skills through weekly competitions.
+
+Each week features a new chapter in an exciting novel, written and serialized specifically for Story Squad by author and educator Graig Peterson. Children are provided with prompts based on the chapter they've just read, and participants are then divided into teams of two. Students create art and fanfiction to match the prompt, before going head to head in a bracket-style tournament.
+
+In addition to growing their literary and artistic skills, students learn team building and critical thinking skills through a unique voting system, where each child must weight their own work against their teammate in order to increase their odds of winning. Badges and points incentivize winning and encourage participation.
+
+Story Squad is a paid service; parents are required to create the account for their children and pay a monthly subscription fee in order for their children to compete. This brings the platform into compliance with COPPA and ensures a long future for the project.
 
 ### Key Features
 
-- feature one
-- feature two
-- feature three
-- feature four
-- feature five
+- A Custom, Serialized Novel geared toward children, 8 to 12 years old
+- Parental Controls which allow parents to add and customize child accounts
+<!-- - Secure Payment Handling via Stripe -->
 
-#### Front end deployed to `🚫insert service here`
+## Tech Stack
 
-#### [Back end](🚫link to back end repo here) built using:
+### Front end built using:
 
-#### 🚫 back end framework goes here
+#### React
+
+- First Class Performance with Virtual DOM
+- Lightweight Library resulting in low bundle size/improved load times
+- Easy cross-platform development via progressive web app
+- Simple routing
+
+#### Okta
+
+- Secure data management
+- Third-party storage for sensitive data
+- Built-in authentication
+
+#### Ant Design
+
+- Pre-built reusable components
+- Provides great styling, saving time for other tasks
+- Provides added built-in functionality
+
+#### React-iframe NPM Package
+
+- Displays easy to read PDFs
+- Works great with images
+
+#### React-Hook-Form NPM Package
+
+- Built-in form data management
+- Built-in error handling
+- Easily adds functionality to traditional HTML forms
+
+#### React-Responsive-Modal NPM Package
+
+- Easy to implement pop-up style windows
+
+<!-- #### Stripe
 
 - point one
 - point two
 - point three
+- point four
 
-🚫 List the rest of the back end end features and libraries in the same format as the framework above
+#### React-Testing-Library
+
+- point one
+- point two
+- point three
+- point four
+
+#### _Front end framework goes here_
+
+- point one
+- point two
+- point three
+- point four -->
+
+
+#### Front end deployed to `AWS Amplify`
+
+#### [Back end](https://github.com/Lambda-School-Labs/Labs26-StorySquad-BE-TeamA) built using:
+
+#### Express
+
+- Built in routing and middleware
+- Useful add-ons such as helmet and CORS
+- Well documented
 
 # APIs
 
-## Authentication API here
+## Okta
 
-🚫Replace text below with a description of the API
+Third party authentication service to store sensitive data in a separate location. Once a registered user logs-in to our app, Okta sends us a secure token to use for validation across secure URL endpoints.
 
-Water's like me. It's laaazy ... Boy, it always looks for the easiest way to do things A little happy sunlight shining through there. Let all these little things happen. Don't fight them. Learn to use them. Even the worst thing we can do here is good.
+## AWS S3
 
-## Payment API here
+An Amazon service for storing data externally, freeing up a lot of needed space for our backend database. We use this service to store the PDFs we need to display, as well as the image files our users upload.
 
-🚫Replace text below with a description of the API
+<!-- ## Stripe
 
-This is the way you take out your flustrations. Get away from those little Christmas tree things we used to make in school. Isn't it fantastic that you can change your mind and create all these happy things? Everything's not great in life, but we can still find beauty in it.
+Stripe is a RESTful API which "has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs." It was chosen for this project because of Stripe's reliability and trustworthiness in the world of online transactions, as well as the way in which the API allows us to bypass storing sensitive information. -->
 
-## Misc API here
 
-🚫Replace text below with a description of the API
+# Environment Variables
 
-You can do anything your heart can imagine. In life you need colors. This is where you take out all your hostilities and frustrations. It's better than kicking the puppy dog around and all that so. I'm sort of a softy, I couldn't shoot Bambi except with a camera. Trees get lonely too, so we'll give him a little friend. We'll lay all these little funky little things in there.
+In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
+
+    *  REACT_APP_CLIENT_ID - This is your Okta group ID, which can be found in the Okta Developer console
+    *  REACT_APP_OKTA_ISSUER_URI - Can be found in the Okta Developer console
+    *  REACT_APP_API_URI - A URL to the backend API
+
+
+<!-- # 5️⃣ Content Licenses
+
+🚫For all content - images, icons, etc, use this table to document permission of use. Remove the two placeholders and add you content to this table
+
+| Image Filename | Source / Creator | License                                                                      |
+| -------------- | ---------------- | ---------------------------------------------------------------------------- |
+| doodles.png    | Nicole Bennett   | [Creative Commons](https://www.toptal.com/designers/subtlepatterns/doodles/) |
+| rings.svg      | Sam Herbert      | [MIT](https://github.com/SamHerbert/SVG-Loaders)                             | -->
+
+# Testing
+
+#### React Testing Library
+
+-   Rendering React Components
+-   Fire Events like onClick for testing user interactions
 
 # Installation Instructions
 
-🚫explain how to install the required dependencies to get this project up and running with yarn and NPM
+Clone repo
+
+```
+git clone https://github.com/Lambda-School-Labs/Labs26-StorySquad-FE-TeamA.git
+
+cd StorySquad-FE-TeamA
+```
+
+Install dependencies
+
+```
+npm install
+```
+
+Run the Application locally
+
+```
+npm start
+```
 
 ## Other Scripts
 
-🚫replace these examples with your own
-
     * build - creates a build of the application
-    * start - starts the production server after a build is created
-    * test - runs tests in **tests** directory \* eject - copy the configuration files and dependencies into the project so you have full control over them
+    * test - runs tests in **tests** directory
+    * eject - copy the configuration files and dependencies into the project so you have full control over them
 
 # Contributing
 
@@ -115,11 +212,17 @@ Remember that this project is licensed under the MIT license, and by submitting 
 
 #### Pull Request Guidelines
 
+- Ensure any install or build dependencies are removed before the end of the layer when doing a build.
 - Update the README.md with details of changes to the interface, including new plist variables, exposed ports, useful file locations and container parameters.
 - Ensure that your code conforms to our existing code conventions and test coverage.
 - Include the relevant issue number, if applicable.
 - You may merge the Pull Request in once you have the sign-off of two other developers, or if you do not have permission to do that, you may request the second reviewer to merge it for you.
 
+
+### Attribution
+
+These contribution guidelines have been adapted from [this good-Contributing.md-template](https://gist.github.com/PurpleBooth/b24679402957c63ec426).
+
 ## Documentation
 
-See [Backend Documentation](🚫*link to your backend API SWAGGER DOCS here*) for details on the backend of our project.
+See [Backend Documentation](https://github.com/Lambda-School-Labs/Labs26-StorySquad-BE-TeamA) for details on the backend of our project.
