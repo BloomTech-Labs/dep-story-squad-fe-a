@@ -4,7 +4,6 @@ import write from './mission_images/write.png';
 import draw from './mission_images/draw.png';
 import { Modal } from 'react-responsive-modal';
 import Iframe from 'react-iframe';
-import { Checkbox } from 'antd';
 
 const RenderMissionDashboard = () => {
   const [pdfModalVisible, setPdfModalVisible] = useState(false);
@@ -29,11 +28,11 @@ const RenderMissionDashboard = () => {
       </div>
       <div className="write-and-draw">
         <div className="write-logo-container">
-          <img src={write} alt="Write" />
+          <img src={write} alt="Write" className="write-logo" />
           <input type="checkbox" className="checkbox" />
         </div>
         <div className="draw-logo-container">
-          <img src={draw} alt="Draw" />
+          <img src={draw} alt="Draw" className="write-logo" />
           <input type="checkbox" className="checkbox" />
         </div>
       </div>
@@ -66,13 +65,15 @@ const RenderMissionDashboard = () => {
           modal: {
             height: '100%',
             width: '100%',
+            padding: '35px',
           },
         }}
       >
         <Iframe
-          url="https://story-squad-files.s3-us-west-1.amazonaws.com/Web-Developer-Bootcamp-Course-Outline.pdf"
+          url="https://story-squad-team-a-app-data.s3.amazonaws.com/shark_stories/stories/Story_Squad_Week_1_reading.pdf"
           height="100%"
           width="100%"
+          frameBorder="5"
         />
       </Modal>
     </div>

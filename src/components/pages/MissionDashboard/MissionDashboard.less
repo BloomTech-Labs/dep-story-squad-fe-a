@@ -14,7 +14,7 @@
   .mission-images{
     box-sizing: border-box;
     display: flex;
-    height:100% - 229px;
+    height: 80vh;
 
     .customModal{
       width: 90%;
@@ -28,31 +28,31 @@
         width: 50vw;
         height: 100vh;
       }
-
-      // .checkbox{
-      //   position: absolute;
-      //   top: 15px; 
-      //   right: 15px;
-      //   width: 35px;
-      //   height: 35px;
-      // }
     }
 
     .write-and-draw{
       display: flex;
       flex-direction: column;
+      height: 100vh;
+      box-sizing: border-box;
+
+      .write-logo{
+        height: 100%;
+        width: 100%;
+      }
         
       .write-logo-container{
         position: relative;
+        height: 50%;
       }
 
       .draw-logo-container{
         position: relative;
+        height: 50%;
       }
       
       img{
-        width: 100%;
-        height: 100%;
+        object-fit: cover;
       }
     }
   }
