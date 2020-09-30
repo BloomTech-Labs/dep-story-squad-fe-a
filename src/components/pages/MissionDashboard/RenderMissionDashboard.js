@@ -4,6 +4,7 @@ import write from './mission_images/write.png';
 import draw from './mission_images/draw.png';
 import { Modal } from 'react-responsive-modal';
 import Iframe from 'react-iframe';
+import { Link } from 'react-router-dom';
 
 const RenderMissionDashboard = () => {
   const [pdfModalVisible, setPdfModalVisible] = useState(false);
@@ -28,7 +29,9 @@ const RenderMissionDashboard = () => {
       </div>
       <div className="write-and-draw">
         <div className="write-logo-container">
-          <img src={write} alt="Write" className="write-logo" />
+          <Link to="/writing-submit">
+            <img src={write} alt="Write" className="write-logo" />
+          </Link>
           <input type="checkbox" className="checkbox" />
         </div>
         <div className="draw-logo-container">
