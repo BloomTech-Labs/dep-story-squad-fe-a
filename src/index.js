@@ -23,6 +23,7 @@ import { ParentDashboard } from './components/pages/ParentDashboard';
 import { ChildDashboard } from './components/pages/ChildDashboard';
 import { MissionDashboard } from './components/pages/MissionDashboard';
 import { WritingSubmit } from './components/pages/WritingSubmit';
+import { ParentSettings } from './components/pages/ParentSettings';
 
 ReactDOM.render(
   <Router>
@@ -60,6 +61,7 @@ function App() {
         <SecureRoute path="/profile-list" component={ProfileListPage} />
         <SecureRoute path="/datavis" component={ExampleDataViz} />
         <SecureRoute path="/parent-dashboard" component={ParentDashboard} />
+        <SecureRoute path="/parent-settings" component={ParentSettings} />
         <SecureRoute path="/child-dashboard" component={ChildDashboard} />
         <SecureRoute path="/mission-dashboard" component={MissionDashboard} />
         <SecureRoute path="/writing-submit" component={WritingSubmit} />
