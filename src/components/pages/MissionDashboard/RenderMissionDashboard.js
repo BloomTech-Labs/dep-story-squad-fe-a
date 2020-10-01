@@ -9,11 +9,13 @@ import { Link } from 'react-router-dom';
 const RenderMissionDashboard = () => {
   const [pdfModalVisible, setPdfModalVisible] = useState(false);
   const [welcomeModalVisible, setWelcomeModalVisible] = useState(true);
+  const [greatJobModalVisible, setGreatJobModalVisible] = useState(false);
   const [readComplete, setReadComplete] = useState(false);
 
   function closePDF() {
     setPdfModalVisible(false);
     setReadComplete(true);
+    setGreatJobModalVisible(true);
   }
 
   return (
@@ -35,7 +37,9 @@ const RenderMissionDashboard = () => {
           <input type="checkbox" className="checkbox" />
         </div>
         <div className="draw-logo-container">
-          <img src={draw} alt="Draw" className="write-logo" />
+          <Link to="/drawing-submit">
+            <img src={draw} alt="Draw" className="write-logo" />
+          </Link>
           <input type="checkbox" className="checkbox" />
         </div>
       </div>
@@ -78,6 +82,20 @@ const RenderMissionDashboard = () => {
           width="100%"
           frameBorder="5"
         />
+      </Modal>
+      <Modal
+        open={greatJobModalVisible}
+        onClose={() => setGreatJobModalVisible(false)}
+        styles={{
+          modal: {
+            padding: '5%',
+          },
+        }}
+        center
+      >
+        <h2>
+          Great Job! Its time to get creative. Click on one of the prompts.
+        </h2>
       </Modal>
     </div>
   );

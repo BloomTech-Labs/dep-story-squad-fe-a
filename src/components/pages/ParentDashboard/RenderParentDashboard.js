@@ -34,7 +34,6 @@ const initialFormValues = {
 const RenderParentDashboard = () => {
   const [children, setChildren] = useState(initialChildren);
   const [modalVisible, setModalVisible] = useState(false);
-  const [open, setOpen] = useState(false);
   const [formValues, setFormValues] = useState(initialFormValues);
   const { register, handleSubmit, errors } = useForm();
 

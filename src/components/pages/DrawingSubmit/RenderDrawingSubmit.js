@@ -1,12 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react';
-import Iframe from 'react-iframe';
+import React, { useState, useRef } from 'react';
 import S3FileUpload from 'react-s3';
 import { v4 as uuidv4 } from 'uuid';
 import { useHistory } from 'react-router-dom';
 import { Modal } from 'react-responsive-modal';
 import { Spin } from 'antd';
 
-const RenderWritingSubmit = () => {
+const RenderDrawingSubmit = () => {
   const [selectedFiles, setSelectedFiles] = useState([]);
   let fileNames = [];
   const [folderID, setFolderID] = useState(uuidv4());
@@ -63,13 +62,9 @@ const RenderWritingSubmit = () => {
   }
 
   return (
-    <div className="writing-submit-container">
-      <div className="writing-prompt">
-        <Iframe
-          url="https://story-squad-team-a-app-data.s3.amazonaws.com/shark_stories/prompts/Story_Squad_Week_1_prompt.pdf"
-          height="100%"
-          width="100%"
-        />
+    <div className="drawing-submit-container">
+      <div className="drawing-prompt">
+        Draw a picture to go along with the story you wrote
       </div>
       <h1>Upload</h1>
       <input
@@ -97,13 +92,13 @@ const RenderWritingSubmit = () => {
         center
       >
         {successfulUpload ? (
-          <h2>Your Writing Had Been Successfully Uploaded!</h2>
+          <h2>Your Drawing Had Been Successfully Uploaded!</h2>
         ) : (
-          <h2>Sorry, an Error Occurred when trying to upload your story</h2>
+          <h2>Sorry, an Error Occurred when trying to upload your drawing</h2>
         )}
       </Modal>
     </div>
   );
 };
 
-export default RenderWritingSubmit;
+export default RenderDrawingSubmit;
