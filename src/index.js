@@ -7,6 +7,9 @@ import {
   Switch,
 } from 'react-router-dom';
 import { Security, LoginCallback, SecureRoute } from '@okta/okta-react';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
 import 'antd/dist/antd.less';
 
@@ -26,12 +29,18 @@ import { WritingSubmit } from './components/pages/WritingSubmit';
 import { DrawingSubmit } from './components/pages/DrawingSubmit';
 import { ParentSettings } from './components/pages/ParentSettings';
 
+import combineReducers from './state/reducers';
+
+const store = createStore(combineReducers, applyMiddleware(thunk));
+
 ReactDOM.render(
-  <Router>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </Router>,
+  <Provider store={store}>
+    <Router>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </Router>
+  </Provider>,
   document.getElementById('root')
 );
 
