@@ -8,7 +8,9 @@ import { Spin } from 'antd';
 
 const RenderWritingSubmit = () => {
   const [selectedFiles, setSelectedFiles] = useState([]);
-  let fileNames = [];
+  const [fileNames, setFileNames] = useState([]);
+  const fileNamesRef = useRef(fileNames);
+  fileNamesRef.current = fileNames;
   const [folderID, setFolderID] = useState(uuidv4());
   const fileInput = useRef(null);
   const [uploadingImages, setUploadingImages] = useState(false);
@@ -16,9 +18,9 @@ const RenderWritingSubmit = () => {
   const [uploadModalVisible, setUploadModalVisible] = useState(false);
   const history = useHistory();
 
-  // useEffect(() => {
-  //   console.log(selectedFiles);
-  // }, [selectedFiles]);
+  useEffect(() => {
+    console.log(selectedFiles);
+  }, [fileNamesRef.current]);
 
   const s3config = {
     bucketName: 'story-squad-team-a-app-data',
@@ -32,9 +34,9 @@ const RenderWritingSubmit = () => {
     e.preventDefault();
     setSelectedFiles(e.target.files);
     const pictures = e.target.files;
-    fileNames = [];
     for (const entry of Object.entries(pictures)) {
-      fileNames.push(entry[1].name);
+      fileNamesRef.current = [...fileNamesRef.current, entry[1].name];
+      setFileNames(fileNamesRef.current);
       console.log('Object Entry:', entry);
     }
     console.log(typeof e.target.files);
@@ -80,8 +82,8 @@ const RenderWritingSubmit = () => {
         className="choose-files"
         ref={fileInput}
       />
-      {fileNames.map(file => (
-        <p>{file.name}</p>
+      {fileNamesRef.current.map((file, index) => (
+        <p key={index}>{file}</p>
       ))}
       <button onClick={handleClick}>Choose Files from your Device</button>
       {uploadingImages ? <Spin /> : <button onClick={onUpload}>Submit</button>}
