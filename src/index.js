@@ -23,6 +23,7 @@ import { ParentDashboard } from './components/pages/ParentDashboard';
 import { ChildDashboard } from './components/pages/ChildDashboard';
 import { MissionDashboard } from './components/pages/MissionDashboard';
 import { WritingSubmit } from './components/pages/WritingSubmit';
+import { DrawingSubmit } from './components/pages/DrawingSubmit';
 import { ParentSettings } from './components/pages/ParentSettings';
 
 ReactDOM.render(
@@ -65,6 +66,7 @@ function App() {
         <SecureRoute path="/child-dashboard" component={ChildDashboard} />
         <SecureRoute path="/mission-dashboard" component={MissionDashboard} />
         <SecureRoute path="/writing-submit" component={WritingSubmit} />
+        <SecureRoute path="/drawing-submit" component={DrawingSubmit} />
         <Route component={NotFoundPage} />
       </Switch>
     </Security>
