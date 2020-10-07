@@ -5,8 +5,10 @@ import { v4 as uuidv4 } from 'uuid';
 import { useHistory } from 'react-router-dom';
 import { Modal } from 'react-responsive-modal';
 import { Spin } from 'antd';
+import { connect } from 'react-redux';
+import axios from 'axios';
 
-const RenderWritingSubmit = () => {
+const RenderWritingSubmit = props => {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [fileNames, setFileNames] = useState([]);
   const fileNamesRef = useRef(fileNames);
@@ -18,13 +20,23 @@ const RenderWritingSubmit = () => {
   const [uploadModalVisible, setUploadModalVisible] = useState(false);
   const history = useHistory();
 
+  const [currentChapter, setCurrentChapter] = useState('');
+
+  useEffect(() => {
+    if (props.game_mode === 'multiplayer') {
+      setCurrentChapter(props.multiplayer_current_chapter);
+    } else {
+      setCurrentChapter(props.singleplayer_current_chapter);
+    }
+  }, []);
+
   useEffect(() => {
     console.log(selectedFiles);
   }, [fileNamesRef.current]);
 
   const s3config = {
-    bucketName: 'story-squad-team-a-app-data',
-    dirName: `upload_testing/username3/${folderID}`,
+    bucketName: 'training-images-team-a',
+    dirName: `new_stories_dataset/${props.game_mode}/${props.student_id}/story_${currentChapter}`,
     region: 'us-east-1',
     accessKeyId: process.env.REACT_APP_S3_KEY,
     secretAccessKey: process.env.REACT_APP_S3_SECRET_KEY,
@@ -32,7 +44,7 @@ const RenderWritingSubmit = () => {
 
   const onFileChange = e => {
     e.preventDefault();
-    setSelectedFiles(e.target.files);
+    setSelectedFiles([...selectedFiles, ...e.target.files]);
     const pictures = e.target.files;
     for (const entry of Object.entries(pictures)) {
       fileNamesRef.current = [...fileNamesRef.current, entry[1].name];
@@ -43,17 +55,48 @@ const RenderWritingSubmit = () => {
     console.log('FILE NAMES:', fileNames);
   };
 
+  const sendKeyToDS = async s3Directory => {
+    const data = {
+      s3_dir: s3Directory,
+      get_complexity_score: 1,
+    };
+    await axios
+      .post('https://a-ds.storysquad.dev/HTR/image/s3_dir', data)
+      .then(res => {
+        console.log('DS Response', res);
+      })
+      .catch(err => console.log(err));
+  };
+
   const onUpload = async () => {
     setUploadingImages(true);
     setFolderID(uuidv4());
-    for (let i = 0; i < selectedFiles.length; i++) {
-      await S3FileUpload.uploadFile(selectedFiles[i], s3config)
-        .then(data => {
-          console.log(data);
-          setSuccessfulUpload(true);
-        })
-        .catch(err => console.error(err));
+    if (selectedFiles.length > 1) {
+      for (let i = 0; i < selectedFiles.length - 1; i++) {
+        await S3FileUpload.uploadFile(selectedFiles[i], s3config)
+          .then(data => {
+            console.log(data);
+          })
+          .catch(err => console.error(err));
+      }
     }
+    await S3FileUpload.uploadFile(
+      selectedFiles[selectedFiles.length - 1],
+      s3config
+    )
+      .then(data => {
+        console.log(data);
+        setSuccessfulUpload(true);
+        const s3Key = data.key.split('/');
+        console.log('S3 Key Split', s3Key);
+        let s3Directory = '';
+        for (let i = 0; i < s3Key.length - 1; i++) {
+          s3Directory = s3Directory + s3Key[i] + '/';
+        }
+        console.log('S3 Directory:', s3Directory);
+        sendKeyToDS(s3Directory);
+      })
+      .catch(err => console.error(err));
     setUploadModalVisible(true);
     setTimeout(function() {
       history.push('/mission-dashboard');
@@ -108,4 +151,15 @@ const RenderWritingSubmit = () => {
   );
 };
 
-export default RenderWritingSubmit;
+const mapStateToProps = state => {
+  return {
+    student_id: state.childReducer.student_id,
+    game_mode: state.childReducer.settings.game_mode,
+    multiplayer_current_chapter:
+      state.childReducer.settings.multiplayer_current_chapter,
+    singleplayer_current_chapter:
+      state.childReducer.settings.singleplayer_current_chapter,
+  };
+};
+
+export default connect(mapStateToProps, {})(RenderWritingSubmit);
