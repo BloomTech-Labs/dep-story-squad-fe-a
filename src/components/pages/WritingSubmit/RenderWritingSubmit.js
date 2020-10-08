@@ -1,19 +1,20 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Iframe from 'react-iframe';
-import S3FileUpload from 'react-s3';
+import S3FileUpload, { uploadFile } from 'react-s3';
 import { v4 as uuidv4 } from 'uuid';
 import { useHistory } from 'react-router-dom';
 import { Modal } from 'react-responsive-modal';
 import { Spin } from 'antd';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import DisplayUploadFiles from '../../common/DisplayUploadFiles.js';
+import { axiosWithAuth } from '../../../api';
 
 const RenderWritingSubmit = props => {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [fileNames, setFileNames] = useState([]);
   const fileNamesRef = useRef(fileNames);
   fileNamesRef.current = fileNames;
-  const [folderID, setFolderID] = useState(uuidv4());
   const fileInput = useRef(null);
   const [uploadingImages, setUploadingImages] = useState(false);
   const [successfulUpload, setSuccessfulUpload] = useState(false);
@@ -59,9 +60,10 @@ const RenderWritingSubmit = props => {
     const data = {
       s3_dir: s3Directory,
       get_complexity_score: 1,
+      star_rating: 0,
     };
-    await axios
-      .post('https://a-ds.storysquad.dev/HTR/image/s3_dir', data)
+    await axiosWithAuth()
+      .post('/HTR/image/s3_dir', data)
       .then(res => {
         console.log('DS Response', res);
       })
@@ -70,7 +72,6 @@ const RenderWritingSubmit = props => {
 
   const onUpload = async () => {
     setUploadingImages(true);
-    setFolderID(uuidv4());
     if (selectedFiles.length > 1) {
       for (let i = 0; i < selectedFiles.length - 1; i++) {
         await S3FileUpload.uploadFile(selectedFiles[i], s3config)
@@ -87,14 +88,14 @@ const RenderWritingSubmit = props => {
       .then(data => {
         console.log(data);
         setSuccessfulUpload(true);
-        const s3Key = data.key.split('/');
-        console.log('S3 Key Split', s3Key);
-        let s3Directory = '';
-        for (let i = 0; i < s3Key.length - 1; i++) {
-          s3Directory = s3Directory + s3Key[i] + '/';
-        }
-        console.log('S3 Directory:', s3Directory);
-        sendKeyToDS(s3Directory);
+        // const s3Key = data.key.split('/');
+        // console.log('S3 Key Split', s3Key);
+        // let s3Directory = '';
+        // for (let i = 0; i < s3Key.length - 1; i++) {
+        //   s3Directory = s3Directory + s3Key[i] + '/';
+        // }
+        // console.log('S3 Directory:', s3Directory);
+        sendKeyToDS(s3config.dirName);
       })
       .catch(err => console.error(err));
     setUploadModalVisible(true);
@@ -106,6 +107,20 @@ const RenderWritingSubmit = props => {
   function handleClick() {
     fileInput.current.click();
   }
+
+  const removeFileFromUploadList = fileName => {
+    let newUploadFiles = [...selectedFiles];
+    const filteredList = newUploadFiles.filter(file => file.name !== fileName);
+    setSelectedFiles(filteredList);
+    console.log('New Upload Files', newUploadFiles);
+
+    let newFileNames = [...fileNames];
+    fileNamesRef.current = newFileNames.filter(file => file !== fileName);
+    setFileNames(fileNamesRef.current);
+
+    console.log('Selected Files after removal', selectedFiles);
+    console.log('File Names after removal', fileNames);
+  };
 
   return (
     <div className="writing-submit-container">
@@ -126,10 +141,24 @@ const RenderWritingSubmit = props => {
         ref={fileInput}
       />
       {fileNamesRef.current.map((file, index) => (
-        <p key={index}>{file}</p>
+        <DisplayUploadFiles
+          key={index}
+          file={file}
+          removeFileFromUploadList={removeFileFromUploadList}
+        />
       ))}
-      <button onClick={handleClick}>Choose Files from your Device</button>
-      {uploadingImages ? <Spin /> : <button onClick={onUpload}>Submit</button>}
+      <button className="choose-files-button" onClick={handleClick}>
+        Choose Files from your Device
+      </button>
+      <div className="submit-button-container">
+        {uploadingImages ? (
+          <Spin />
+        ) : (
+          <button className="submit-button" onClick={onUpload}>
+            Submit
+          </button>
+        )}
+      </div>
       <Modal
         open={uploadModalVisible}
         onClose={() => null}

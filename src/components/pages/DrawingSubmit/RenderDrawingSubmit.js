@@ -4,26 +4,37 @@ import { v4 as uuidv4 } from 'uuid';
 import { useHistory } from 'react-router-dom';
 import { Modal } from 'react-responsive-modal';
 import { Spin } from 'antd';
+import { connect } from 'react-redux';
+import DisplayUploadFiles from '../../common/DisplayUploadFiles.js';
 
-const RenderDrawingSubmit = () => {
+const RenderDrawingSubmit = props => {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [fileNames, setFileNames] = useState([]);
   const fileNamesRef = useRef(fileNames);
   fileNamesRef.current = fileNames;
-  const [folderID, setFolderID] = useState(uuidv4());
   const fileInput = useRef(null);
   const [uploadingImages, setUploadingImages] = useState(false);
   const [successfulUpload, setSuccessfulUpload] = useState(false);
   const [uploadModalVisible, setUploadModalVisible] = useState(false);
   const history = useHistory();
 
+  const [currentChapter, setCurrentChapter] = useState('');
+
+  useEffect(() => {
+    if (props.game_mode === 'multiplayer') {
+      setCurrentChapter(props.multiplayer_current_chapter);
+    } else {
+      setCurrentChapter(props.singleplayer_current_chapter);
+    }
+  }, []);
+
   useEffect(() => {
     console.log(selectedFiles);
   }, [fileNamesRef.current]);
 
   const s3config = {
-    bucketName: 'story-squad-team-a-app-data',
-    dirName: `upload_testing/username3/${folderID}`,
+    bucketName: 'training-images-team-a',
+    dirName: `drawings/${props.game_mode}/${props.student_id}/story_${currentChapter}`,
     region: 'us-east-1',
     accessKeyId: process.env.REACT_APP_S3_KEY,
     secretAccessKey: process.env.REACT_APP_S3_SECRET_KEY,
@@ -31,9 +42,8 @@ const RenderDrawingSubmit = () => {
 
   const onFileChange = e => {
     e.preventDefault();
-    setSelectedFiles(e.target.files);
+    setSelectedFiles([...selectedFiles, ...e.target.files]);
     const pictures = e.target.files;
-    fileNames = [];
     for (const entry of Object.entries(pictures)) {
       fileNamesRef.current = [...fileNamesRef.current, entry[1].name];
       setFileNames(fileNamesRef.current);
@@ -45,7 +55,6 @@ const RenderDrawingSubmit = () => {
 
   const onUpload = async () => {
     setUploadingImages(true);
-    setFolderID(uuidv4());
     for (let i = 0; i < selectedFiles.length; i++) {
       await S3FileUpload.uploadFile(selectedFiles[i], s3config)
         .then(data => {
@@ -64,6 +73,20 @@ const RenderDrawingSubmit = () => {
     fileInput.current.click();
   }
 
+  const removeFileFromUploadList = fileName => {
+    let newUploadFiles = [...selectedFiles];
+    const filteredList = newUploadFiles.filter(file => file.name !== fileName);
+    setSelectedFiles(filteredList);
+    console.log('New Upload Files', newUploadFiles);
+
+    let newFileNames = [...fileNames];
+    fileNamesRef.current = newFileNames.filter(file => file !== fileName);
+    setFileNames(fileNamesRef.current);
+
+    console.log('Selected Files after removal', selectedFiles);
+    console.log('File Names after removal', fileNames);
+  };
+
   return (
     <div className="drawing-submit-container">
       <div className="drawing-prompt">
@@ -79,10 +102,24 @@ const RenderDrawingSubmit = () => {
         ref={fileInput}
       />
       {fileNamesRef.current.map((file, index) => (
-        <p key={index}>{file}</p>
+        <DisplayUploadFiles
+          key={index}
+          file={file}
+          removeFileFromUploadList={removeFileFromUploadList}
+        />
       ))}
-      <button onClick={handleClick}>Choose Files from your Device</button>
-      {uploadingImages ? <Spin /> : <button onClick={onUpload}>Submit</button>}
+      <button className="choose-drawing-button" onClick={handleClick}>
+        Choose Files from your Device
+      </button>
+      <div className="submit-drawing-button-container">
+        {uploadingImages ? (
+          <Spin />
+        ) : (
+          <button className="submit-drawing-button" onClick={onUpload}>
+            Submit
+          </button>
+        )}
+      </div>
       <Modal
         open={uploadModalVisible}
         onClose={() => null}
@@ -104,4 +141,15 @@ const RenderDrawingSubmit = () => {
   );
 };
 
-export default RenderDrawingSubmit;
+const mapStateToProps = state => {
+  return {
+    student_id: state.childReducer.student_id,
+    game_mode: state.childReducer.settings.game_mode,
+    multiplayer_current_chapter:
+      state.childReducer.settings.multiplayer_current_chapter,
+    singleplayer_current_chapter:
+      state.childReducer.settings.singleplayer_current_chapter,
+  };
+};
+
+export default connect(mapStateToProps, {})(RenderDrawingSubmit);
