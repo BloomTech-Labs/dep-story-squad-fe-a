@@ -52,8 +52,8 @@ const getProfileData = authState => {
 const axiosWithAuth = () => {
   const token = process.env.REACT_APP_DS_TOKEN;
   return axios.create({
-    headers: { Authorization: 'xD5w6CTfQSh6qs4xviIV6viQomie3ePjQQeDQjsr' },
-    baseURL: 'https://a-ds.storysquad.dev',
+    headers: { token: token },
+    baseURL: process.env.REACT_APP_DS_API,
   });
 };
 
