@@ -45,7 +45,7 @@ Story Squad is a paid service; parents are required to create the account for th
 
 - A Custom, Serialized Novel geared toward children, 8 to 12 years old
 - Parental Controls which allow parents to add and customize child accounts
-<!-- - Secure Payment Handling via Stripe -->
+- Secure Payment Handling via Stripe
 
 ## Tech Stack
 
@@ -57,6 +57,12 @@ Story Squad is a paid service; parents are required to create the account for th
 - Lightweight Library resulting in low bundle size/improved load times
 - Easy cross-platform development via progressive web app
 - Simple routing
+
+#### Redux
+
+- Predictable state management library
+- Provides global state management, instead of passing state from parent and child components
+-Easily to maintain and update if necessary
 
 #### Okta
 
@@ -85,14 +91,18 @@ Story Squad is a paid service; parents are required to create the account for th
 
 - Easy to implement pop-up style windows
 
-<!-- #### Stripe
+#### Stripe
 
-- point one
-- point two
-- point three
-- point four
+- Secure Payment library
+- Allows us to bypass storing sensitive information
 
-#### React-Testing-Library
+#### aws-s3
+
+- Pre-built library specifically for making API requests to AWS S3
+- Easily adds or removes files from S3 buckets
+- Creates an easily maintainable folder structure for file organization
+
+<!-- #### React-Testing-Library
 
 - point one
 - point two
@@ -127,9 +137,9 @@ Third party authentication service to store sensitive data in a separate locatio
 
 An Amazon service for storing data externally, freeing up a lot of needed space for our backend database. We use this service to store the PDFs we need to display, as well as the image files our users upload.
 
-<!-- ## Stripe
+## Stripe
 
-Stripe is a RESTful API which "has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs." It was chosen for this project because of Stripe's reliability and trustworthiness in the world of online transactions, as well as the way in which the API allows us to bypass storing sensitive information. -->
+Stripe is a RESTful API which "has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs." It was chosen for this project because of Stripe's reliability and trustworthiness in the world of online transactions, as well as the way in which the API allows us to bypass storing sensitive information.
 
 
 # Environment Variables
@@ -139,6 +149,10 @@ In order for the app to function correctly, the user must set up their own envir
     *  REACT_APP_CLIENT_ID - This is your Okta group ID, which can be found in the Okta Developer console
     *  REACT_APP_OKTA_ISSUER_URI - Can be found in the Okta Developer console
     *  REACT_APP_API_URI - A URL to the backend API
+    *  REACT_APP_DS_API - URL to the Data Science deployed backend
+    *  REACT_APP_S3_SECRET_KEY - an AWS Secret Key required to manage files stored in S3
+    *  REACT_APP_S3_KEY- another AWS key required to manage files stored in S3
+    *  REACT_APP_DS_TOKEN - A token which is required to make secure requests to the Data Science API
 
 
 <!-- # 5️⃣ Content Licenses
@@ -150,12 +164,12 @@ In order for the app to function correctly, the user must set up their own envir
 | doodles.png    | Nicole Bennett   | [Creative Commons](https://www.toptal.com/designers/subtlepatterns/doodles/) |
 | rings.svg      | Sam Herbert      | [MIT](https://github.com/SamHerbert/SVG-Loaders)                             | -->
 
-# Testing
+<!-- # Testing
 
 #### React Testing Library
 
 -   Rendering React Components
--   Fire Events like onClick for testing user interactions
+-   Fire Events like onClick for testing user interactions -->
 
 # Installation Instructions
 
@@ -225,4 +239,4 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 ## Documentation
 
-See [Backend Documentation](https://github.com/Lambda-School-Labs/Labs26-StorySquad-BE-TeamA) for details on the backend of our project.
+See [API Documentation](https://github.com/Lambda-School-Labs/Labs26-StorySquad-BE-TeamA/blob/es6/documentation/APIDOCS.md) and [Database Documentation](https://github.com/Lambda-School-Labs/Labs26-StorySquad-BE-TeamA/blob/es6/documentation/DBDOCS.md) for details on the backend of our project.
