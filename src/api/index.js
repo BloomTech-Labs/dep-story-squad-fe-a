@@ -49,12 +49,20 @@ const getProfileData = authState => {
   }
 };
 
-const axiosWithAuth = () => {
-  const token = process.env.REACT_APP_DS_TOKEN;
-  return axios.create({
-    headers: { token: token },
-    baseURL: process.env.REACT_APP_DS_API,
-  });
+const axiosWithAuth = backend => {
+  if (backend === 'ds') {
+    const token = process.env.REACT_APP_DS_TOKEN;
+    return axios.create({
+      headers: { token: token },
+      baseURL: process.env.REACT_APP_DS_API,
+    });
+  } else if (backend === 'web') {
+    const token = JSON.parse(localStorage.getItem('okta-token-storage'));
+    return axios.create({
+      headers: { authorization: token.idToken.idToken },
+      baseURL: process.env.REACT_APP_API_URI,
+    });
+  }
 };
 
 export { sleep, getExampleData, getProfileData, getDSData, axiosWithAuth };

@@ -62,7 +62,7 @@ const RenderWritingSubmit = props => {
       get_complexity_score: 1,
       star_rating: 0,
     };
-    await axiosWithAuth()
+    await axiosWithAuth('ds')
       .post('/HTR/image/s3_dir', data)
       .then(res => {
         console.log('DS Response', res);
