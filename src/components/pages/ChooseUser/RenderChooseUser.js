@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { axiosWithAuth } from '../../../api';
 import './ChooseUser.less';
 
 const initialChildren = [
@@ -18,6 +19,14 @@ const initialChildren = [
 const RenderChooseUser = () => {
   const [children, setChildren] = useState(initialChildren);
   const history = useHistory();
+
+  // !!!! NOT WORKING. Waiting for Backend to troubleshoot API bugs !!!!
+  // useEffect(() => {
+  //   axiosWithAuth("web")
+  //     .get('/api/account/login')
+  //     .then(res => console.log("Web Backend Login Res", res))
+  //     .catch(err => console.log("Web Backend Login Error", err.message))
+  // }, [])
 
   return (
     <div className="outer-container">
