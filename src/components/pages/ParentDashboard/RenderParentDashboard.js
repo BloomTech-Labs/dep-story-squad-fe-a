@@ -5,6 +5,9 @@ import { PlusCircleFilled } from '@ant-design/icons';
 import { useForm } from 'react-hook-form';
 import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
+import { axiosWithAuth } from '../../../api';
+import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
+import { connect } from 'react-redux';
 
 const { Meta } = Card;
 
@@ -31,11 +34,12 @@ const initialFormValues = {
   image: '',
 };
 
-const RenderParentDashboard = () => {
+const RenderParentDashboard = props => {
   const [children, setChildren] = useState(initialChildren);
   const [modalVisible, setModalVisible] = useState(false);
   const [formValues, setFormValues] = useState(initialFormValues);
   const { register, handleSubmit, errors } = useForm();
+  const { authState } = useOktaAuth();
 
   const onSubmit = values => {
     setChildren([...children, values]);
@@ -43,6 +47,18 @@ const RenderParentDashboard = () => {
     setFormValues(initialFormValues);
     console.log(children);
     setModalVisible(false);
+
+    const newStudent = {
+      username: values.username,
+      account_id: props.account_id,
+    };
+
+    console.log('Request Username:', newStudent.username);
+
+    axiosWithAuth('web', authState)
+      .post('/api/student', newStudent)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
   };
 
   return (
@@ -107,4 +123,10 @@ const RenderParentDashboard = () => {
   );
 };
 
-export default RenderParentDashboard;
+const mapStateToProps = state => {
+  return {
+    account_id: state.parentReducer.account_id,
+  };
+};
+
+export default connect(mapStateToProps, {})(RenderParentDashboard);

@@ -49,7 +49,7 @@ const getProfileData = authState => {
   }
 };
 
-const axiosWithAuth = backend => {
+const axiosWithAuth = (backend, authState = null) => {
   if (backend === 'ds') {
     const token = process.env.REACT_APP_DS_TOKEN;
     return axios.create({
@@ -57,12 +57,19 @@ const axiosWithAuth = backend => {
       baseURL: process.env.REACT_APP_DS_API,
     });
   } else if (backend === 'web') {
-    const token = JSON.parse(localStorage.getItem('okta-token-storage'));
+    const header = getAuthHeader(authState);
     return axios.create({
-      headers: { authorization: token.idToken.idToken },
+      headers: header,
       baseURL: process.env.REACT_APP_API_URI,
     });
   }
 };
 
-export { sleep, getExampleData, getProfileData, getDSData, axiosWithAuth };
+export {
+  sleep,
+  getExampleData,
+  getProfileData,
+  getDSData,
+  axiosWithAuth,
+  getAuthHeader,
+};
