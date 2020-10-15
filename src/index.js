@@ -10,6 +10,7 @@ import { Security, LoginCallback, SecureRoute } from '@okta/okta-react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import logger from 'redux-logger';
 
 import 'antd/dist/antd.less';
 
@@ -31,7 +32,7 @@ import { ParentSettings } from './components/pages/ParentSettings';
 
 import combineReducers from './state/reducers';
 
-const store = createStore(combineReducers, applyMiddleware(thunk));
+const store = createStore(combineReducers, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
   <Provider store={store}>
