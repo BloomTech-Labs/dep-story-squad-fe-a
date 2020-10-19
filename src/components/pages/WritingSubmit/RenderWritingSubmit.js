@@ -1,14 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Iframe from 'react-iframe';
-import S3FileUpload, { uploadFile } from 'react-s3';
-import { v4 as uuidv4 } from 'uuid';
+import S3FileUpload from 'react-s3';
 import { useHistory } from 'react-router-dom';
 import { Modal } from 'react-responsive-modal';
 import { Spin } from 'antd';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import DisplayUploadFiles from '../../common/DisplayUploadFiles.js';
 import { axiosWithAuth } from '../../../api';
+import { writingCompleted } from '../../../state/actions';
 
 const RenderWritingSubmit = props => {
   const [selectedFiles, setSelectedFiles] = useState([]);
@@ -88,17 +87,11 @@ const RenderWritingSubmit = props => {
       .then(data => {
         console.log(data);
         setSuccessfulUpload(true);
-        // const s3Key = data.key.split('/');
-        // console.log('S3 Key Split', s3Key);
-        // let s3Directory = '';
-        // for (let i = 0; i < s3Key.length - 1; i++) {
-        //   s3Directory = s3Directory + s3Key[i] + '/';
-        // }
-        // console.log('S3 Directory:', s3Directory);
         sendKeyToDS(s3config.dirName);
       })
       .catch(err => console.error(err));
     setUploadModalVisible(true);
+    props.writingCompleted();
     setTimeout(function() {
       history.push('/mission-dashboard');
     }, 5000);
@@ -191,4 +184,6 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, {})(RenderWritingSubmit);
+export default connect(mapStateToProps, { writingCompleted })(
+  RenderWritingSubmit
+);

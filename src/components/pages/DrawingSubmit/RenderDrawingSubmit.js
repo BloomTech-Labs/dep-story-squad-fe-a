@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import S3FileUpload from 'react-s3';
-import { v4 as uuidv4 } from 'uuid';
 import { useHistory } from 'react-router-dom';
 import { Modal } from 'react-responsive-modal';
 import { Spin } from 'antd';
 import { connect } from 'react-redux';
 import DisplayUploadFiles from '../../common/DisplayUploadFiles.js';
+import { drawingCompleted } from '../../../state/actions';
 
 const RenderDrawingSubmit = props => {
   const [selectedFiles, setSelectedFiles] = useState([]);
@@ -64,6 +64,7 @@ const RenderDrawingSubmit = props => {
         .catch(err => console.error(err));
     }
     setUploadModalVisible(true);
+    props.drawingCompleted();
     setTimeout(function() {
       history.push('/mission-dashboard');
     }, 5000);
@@ -152,4 +153,6 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, {})(RenderDrawingSubmit);
+export default connect(mapStateToProps, { drawingCompleted })(
+  RenderDrawingSubmit
+);

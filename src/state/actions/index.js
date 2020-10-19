@@ -16,9 +16,34 @@ export const updateParentInfo = authState => {
     axiosWithAuth('web', authState)
       .get('/api/account/login')
       .then(res => {
-        console.log('Web Backend Login Res', res.data[0]);
-        dispatch({ type: UPDATE_PARENT_INFO, payload: res.data[0] });
+        console.log('Web Backend Login Res', res.data);
+        dispatch({ type: UPDATE_PARENT_INFO, payload: res.data });
       })
       .catch(err => console.log('Web Backend Login Error:', err));
   };
+};
+
+export const UPDATE_CHILD_INFO = 'UPDATE_CHILD_INFO';
+export const updateChildInfo = child => {
+  return { type: UPDATE_CHILD_INFO, payload: child };
+};
+
+export const CLEAR_CHILD_INFO = 'CLEAR_CHILD_INFO';
+export const clearChildInfo = () => {
+  return { type: CLEAR_CHILD_INFO };
+};
+
+export const READING_COMPLETED = 'READING_COMPLETED';
+export const readingCompleted = () => {
+  return { type: READING_COMPLETED };
+};
+
+export const WRITING_COMPLETED = 'WRITING_COMPLETED';
+export const writingCompleted = () => {
+  return { type: WRITING_COMPLETED };
+};
+
+export const DRAWING_COMPLETED = 'DRAWING_COMPLETED';
+export const drawingCompleted = () => {
+  return { type: DRAWING_COMPLETED };
 };

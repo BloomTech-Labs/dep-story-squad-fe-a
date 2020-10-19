@@ -1,7 +1,7 @@
 import { UPDATE_PARENT_INFO } from '../actions';
 
 const initialState = {
-  account_id: 'test',
+  account_id: '',
   username: '',
   email: '',
   student_ids: [],
@@ -24,9 +24,9 @@ export const parentReducer = (state = initialState, { type, payload }) => {
           account_id: payload.account_id,
           username: payload.username,
           email: payload.email,
-          student_ids: [...state.student_ids, ...payload.student_ids],
-          settings: { ...state.settings, ...payload.settings },
-          stripe: { ...state.stripe, ...payload.stripe },
+          student_ids: payload.student_ids,
+          settings: payload.settings,
+          stripe: payload.stripe,
         };
       } else {
         return {
@@ -34,8 +34,8 @@ export const parentReducer = (state = initialState, { type, payload }) => {
           account_id: payload.account_id,
           username: payload.username,
           email: payload.email,
-          settings: { ...state.settings, ...payload.settings },
-          stripe: { ...state.stripe, ...payload.stripe },
+          settings: payload.settings,
+          stripe: payload.stripe,
         };
       }
 

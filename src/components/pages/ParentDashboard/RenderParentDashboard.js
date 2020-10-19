@@ -8,6 +8,7 @@ import 'react-responsive-modal/styles.css';
 import { axiosWithAuth } from '../../../api';
 import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
 import { connect } from 'react-redux';
+import { updateParentInfo } from '../../../state/actions';
 
 const { Meta } = Card;
 
@@ -41,6 +42,10 @@ const RenderParentDashboard = props => {
   const { register, handleSubmit, errors } = useForm();
   const { authState } = useOktaAuth();
 
+  if (!props.account_id) {
+    props.updateParentInfo(authState);
+  }
+
   const onSubmit = values => {
     setChildren([...children, values]);
     console.log('Values:', values);
@@ -51,15 +56,18 @@ const RenderParentDashboard = props => {
     const newStudent = {
       username: values.username,
       account_id: props.account_id,
+      pin: values.pin,
     };
 
-    console.log('Request Username:', newStudent.username);
+    console.log('Request Body:', newStudent);
 
     axiosWithAuth('web', authState)
       .post('/api/student', newStudent)
       .then(res => console.log(res))
       .catch(err => console.log(err));
   };
+
+  console.log('Account ID from Redux Store:', props.account_id);
 
   return (
     <div>
@@ -110,10 +118,26 @@ const RenderParentDashboard = props => {
           <br />
           <br />
 
+          <label>
+            PIN Number: &nbsp;
+            <input
+              type="number"
+              name="pin"
+              min="1000"
+              max="9999"
+              ref={register({ required: true })}
+            />
+          </label>
+
+          <br />
+          <br />
+
           {/* errors will return when field validation fails  */}
           {errors.username && <span>A User Name is required</span>}
           <br />
           {errors.grade && <span>A Grade Level is required</span>}
+          <br />
+          {errors.pin && <span>A 4-Digit PIN Number is required</span>}
           <br />
 
           <input type="submit" />
@@ -129,4 +153,6 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, {})(RenderParentDashboard);
+export default connect(mapStateToProps, { updateParentInfo })(
+  RenderParentDashboard
+);
