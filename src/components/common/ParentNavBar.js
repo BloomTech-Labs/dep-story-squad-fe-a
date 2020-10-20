@@ -18,6 +18,10 @@ const ParentNavBar = props => {
           <Link to="/parent-settings">Parent Settings</Link>
         </Menu.Item>
 
+        <Menu.Item key="settings">
+          <Link to="/">Choose User</Link>
+        </Menu.Item>
+
         <Menu.Item key="help">Help</Menu.Item>
         <Menu.Item key="logout" onClick={() => authService.logout()}>
           Logout

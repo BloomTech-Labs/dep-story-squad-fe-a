@@ -4,20 +4,11 @@ import { axiosWithAuth } from '../../../api';
 import './ChooseUser.less';
 import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
 import { connect } from 'react-redux';
-import { updateParentInfo } from '../../../state/actions';
-
-const initialChildren = [
-  {
-    name: 'Bob',
-    grade: 5,
-    dyslexia: false,
-  },
-  {
-    name: 'Joe',
-    grade: 4,
-    dyslexia: false,
-  },
-];
+import {
+  updateParentInfo,
+  updateChildInfo,
+  clearChildInfo,
+} from '../../../state/actions';
 
 const RenderChooseUser = props => {
   const [children, setChildren] = useState(props.children);
@@ -28,14 +19,23 @@ const RenderChooseUser = props => {
 
   useEffect(() => {
     props.updateParentInfo(authState);
+    props.clearChildInfo();
   }, []);
 
   useEffect(() => {
     axiosWithAuth('web', authState)
       .get('/api/account/students')
-      .then(res => console.log('Web Backend STUDENT Res', res))
-      .catch(err => console.log(err));
+      .then(res => {
+        console.log('Web Backend STUDENT Res', res);
+        setChildren(res.data.students);
+      })
+      .catch(err => console.log('Web Backend STUDENT Error', err));
   }, [username]);
+
+  const clickChildButton = child => {
+    props.updateChildInfo(child);
+    history.push('/child-dashboard');
+  };
 
   return (
     <div className="outer-container">
@@ -56,8 +56,11 @@ const RenderChooseUser = props => {
             {props.username}
           </button>
           {children.map(child => (
-            <button onClick={() => history.push('/child-dashboard')}>
-              {child.name}
+            <button
+              key={child.student_id}
+              onClick={() => clickChildButton(child)}
+            >
+              {child.username}
             </button>
           ))}
         </div>
@@ -75,4 +78,8 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { updateParentInfo })(RenderChooseUser);
+export default connect(mapStateToProps, {
+  updateParentInfo,
+  updateChildInfo,
+  clearChildInfo,
+})(RenderChooseUser);
