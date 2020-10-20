@@ -4,8 +4,6 @@ import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
 
 import { config } from '../../../utils/oktaConfig';
 
-import Header from '../../common/Header.js';
-import './LoginContainer.less';
 const LoginContainer = () => {
   useEffect(() => {
     const { pkce, issuer, clientId, redirectUri, scopes } = config;
@@ -49,33 +47,7 @@ const LoginContainer = () => {
     );
   }, []);
 
-  return (
-    <div>
-      <Header title="Story Squad" />
-      <section className="main-container">
-        <div className="welcome-text">
-          <p>
-            Story Squad is a game where imagination comes to play. It’s where
-            generating ideas scores big.
-          </p>
-          <br />
-          <p>
-            Story Squad springs storytellers into action by partnering them up
-            to participate in interactive & immersive creative challenges.
-          </p>
-          <br />
-          <p>
-            Become a master of your craft by submitting original drawings &
-            handwritten stories, receiving and giving real feedback, sharing
-            points in a squad-vs-squad matchup, and finally see if you won.
-          </p>
-          <br />
-          <p>Ready?</p>
-        </div>
-        <div id="sign-in-widget" />
-      </section>
-    </div>
-  );
+  return <div id="sign-in-widget" />;
 };
 
 export default LoginContainer;
