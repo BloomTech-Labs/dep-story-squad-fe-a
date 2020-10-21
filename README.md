@@ -240,3 +240,17 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 ## Documentation
 
 See [API Documentation](https://github.com/Lambda-School-Labs/Labs26-StorySquad-BE-TeamA/blob/es6/documentation/APIDOCS.md) and [Database Documentation](https://github.com/Lambda-School-Labs/Labs26-StorySquad-BE-TeamA/blob/es6/documentation/DBDOCS.md) for details on the backend of our project.
+
+## Known issues at the end of Labs26 10/23/2020
+
+-   User Must Login Twice:  
+    After a user attempts to login, they are redirected to a page that displays the error message "Error: AuthApiError". Though, after receiving that error, if the user returns to the base URL (a.storysquad.dev) and logs in a second time, they will be redirected tot he proper place
+
+-   Re-selecting Files to Upload:  
+    When a child selects files to upload, they are able to delete any of those files from staging before clicking "Submit." Though, If they delete files and then try to select new files, the file selection window does not open.
+
+-   The RenderParentDashboard file does not display children from the Redux Store:  
+    The file contains a hard-coded "initialChildren" variable containing dummy-data. 
+
+-   The URLs for PDF files inside ChildDashboard and WritingSubmit are hard-coded:  
+    Our team was only supplied with one chapter of the reading, and one PDF of writing prompts, and therefore did not see a need to make the URLs dynamic. 

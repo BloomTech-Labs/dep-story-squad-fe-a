@@ -18,7 +18,7 @@ const ParentNavBar = props => {
           <Link to="/parent-settings">Parent Settings</Link>
         </Menu.Item>
 
-        <Menu.Item key="settings">
+        <Menu.Item key="choose-user">
           <Link to="/">Choose User</Link>
         </Menu.Item>
 
