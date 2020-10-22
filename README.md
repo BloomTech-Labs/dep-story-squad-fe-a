@@ -3,6 +3,10 @@
 
 We deployed our project using [AWS Amplify](https://a.storysquad.dev/).
 
+## Demo Videos
+
+[GoogleDrive](https://drive.google.com/drive/folders/1CRnotKkZo9K-7AGBgfniRfJlwwfySO4F?usp=sharing)
+
 ## Contributors
 
 
