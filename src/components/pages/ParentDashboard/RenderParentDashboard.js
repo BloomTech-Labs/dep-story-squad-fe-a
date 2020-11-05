@@ -9,6 +9,7 @@ import { axiosWithAuth } from '../../../api';
 import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
 import { connect } from 'react-redux';
 import { updateParentInfo } from '../../../state/actions';
+import Hero_3 from '../../common/images/avatars/Hero_3.png';
 
 const { Meta } = Card;
 
@@ -24,7 +25,7 @@ const initialChildren = [
     username: 'Joe',
     grade: 4,
     dyslexic: false,
-    image: '../../common/images/avatars/Hero_3.png',
+    image: Hero_3,
   },
 ];
 
