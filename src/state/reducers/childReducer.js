@@ -44,7 +44,10 @@ export const childReducer = (state = initialState, { type, payload }) => {
         ...state,
         student_id: payload.student_id,
         username: payload.username,
-        records: payload.records,
+        records:
+          Object.keys(payload.records).length === 0
+            ? initialState.records
+            : payload.records,
         // settings: {
         //   game_mode: 'singleplayer',
         //   multiplayer_current_chapter: 1,
