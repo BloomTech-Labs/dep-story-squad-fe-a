@@ -36,7 +36,9 @@ export const childReducer = (state = initialState, { type, payload }) => {
     //   }
 
     case UPDATE_CHILD_RECORDS:
-      console.log('in Child reducer updateChildrecords', payload);
+      return {
+        ...state,
+      };
     case UPDATE_CHILD_INFO:
       console.log('in Child reducer updateChildInfo', payload);
       return {
@@ -80,7 +82,7 @@ export const childReducer = (state = initialState, { type, payload }) => {
         ...state,
         records: {
           ...state.records,
-          reading_count: +1,
+          reading_count: (state.records.reading_count += 1),
         },
         settings: { ...state.settings, reading_complete: true },
       };
@@ -90,7 +92,7 @@ export const childReducer = (state = initialState, { type, payload }) => {
         ...state,
         records: {
           ...state.records,
-          writing_count: +1,
+          writing_count: (state.records.writing_count += 1),
         },
         settings: { ...state.settings, writing_complete: true },
       };
@@ -100,8 +102,8 @@ export const childReducer = (state = initialState, { type, payload }) => {
         ...state,
         records: {
           ...state.records,
-          drawing_count: +1,
-          days_count: +1,
+          drawing_count: (state.records.drawing_count += 1),
+          days_count: (state.records.days_count += 1),
         },
         settings: { ...state.settings, drawing_complete: true },
       };
