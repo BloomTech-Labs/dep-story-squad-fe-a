@@ -67,7 +67,7 @@ const RenderDrawingSubmit = props => {
     }
     setUploadModalVisible(true);
     props.drawingCompleted();
-    props.updateChildRecords(authState, props.student_id, props.records);
+    props.updateChildRecords(authState, props.student_id, props.student);
 
     setTimeout(function() {
       history.push('/mission-dashboard');
