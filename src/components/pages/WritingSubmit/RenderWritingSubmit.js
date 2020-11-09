@@ -175,7 +175,6 @@ const RenderWritingSubmit = props => {
 
 const mapStateToProps = state => {
   return {
-    records: state.childReducer.records,
     student_id: state.childReducer.student_id,
     game_mode: state.childReducer.settings.game_mode,
     multiplayer_current_chapter:
