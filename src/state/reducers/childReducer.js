@@ -36,18 +36,18 @@ export const childReducer = (state = initialState, { type, payload }) => {
     //   }
 
     case UPDATE_CHILD_RECORDS:
-      console.log('in Child reducer updateChildrecords', payload);
-
       return {
         ...state,
       };
-
     case UPDATE_CHILD_INFO:
       return {
         ...state,
         student_id: payload.student_id,
         username: payload.username,
-        records: payload.records,
+        records:
+          Object.keys(payload.records).length === 0
+            ? initialState.records
+            : payload.records,
         // settings: {
         //   game_mode: 'singleplayer',
         //   multiplayer_current_chapter: 1,
@@ -86,7 +86,6 @@ export const childReducer = (state = initialState, { type, payload }) => {
           ...state.records,
           reading_count: (state.records.reading_count += 1),
         },
-
         settings: { ...state.settings, reading_complete: true },
       };
 
@@ -97,7 +96,6 @@ export const childReducer = (state = initialState, { type, payload }) => {
           ...state.records,
           writing_count: (state.records.writing_count += 1),
         },
-
         settings: { ...state.settings, writing_complete: true },
       };
 
@@ -106,7 +104,7 @@ export const childReducer = (state = initialState, { type, payload }) => {
         ...state,
         records: {
           ...state.records,
-          drawing_count: (state.records.drawing_complete += 1),
+          drawing_count: (state.records.drawing_count += 1),
           days_count: (state.records.days_count += 1),
         },
         settings: { ...state.settings, drawing_complete: true },

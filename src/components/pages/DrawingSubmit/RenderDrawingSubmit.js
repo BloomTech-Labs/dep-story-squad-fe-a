@@ -3,11 +3,10 @@ import S3FileUpload from 'react-s3';
 import { useHistory } from 'react-router-dom';
 import { Modal } from 'react-responsive-modal';
 import { Spin } from 'antd';
+import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
 import { connect } from 'react-redux';
 import DisplayUploadFiles from '../../common/DisplayUploadFiles.js';
-import { drawingCompleted } from '../../../state/actions';
-import { updateChildRecords } from '../../../state/actions';
-import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
+import { drawingCompleted, updateChildRecords } from '../../../state/actions';
 
 const RenderDrawingSubmit = props => {
   const [selectedFiles, setSelectedFiles] = useState([]);
@@ -71,7 +70,7 @@ const RenderDrawingSubmit = props => {
     //check this function to make sure it is working
     setUploadModalVisible(true);
     props.drawingCompleted();
-    props.updateChildRecords(authState, props.student_id, props.records);
+    props.updateChildRecords(authState, props.student_id, props.student);
 
     setTimeout(function() {
       history.push('/mission-dashboard');
@@ -152,13 +151,13 @@ const RenderDrawingSubmit = props => {
 
 const mapStateToProps = state => {
   return {
+    student: state.childReducer,
     student_id: state.childReducer.student_id,
     game_mode: state.childReducer.settings.game_mode,
     multiplayer_current_chapter:
       state.childReducer.settings.multiplayer_current_chapter,
     singleplayer_current_chapter:
-      state.childReducer.settings.singleplayer_current_chapter,
-    records: state.childReducer,
+      state.childReducer.settings.singleplayer_current_chapter,    
   };
 };
 

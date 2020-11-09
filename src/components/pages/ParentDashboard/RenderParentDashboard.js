@@ -9,8 +9,7 @@ import { axiosWithAuth } from '../../../api';
 import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
 import { connect } from 'react-redux';
 import { updateParentInfo } from '../../../state/actions';
-import Hero_3 from '../../common/images/avatars/Hero_3.png';
-
+import hero_img from '../../common/images/avatars/Hero_3.png';
 const { Meta } = Card;
 
 const initialChildren = [
@@ -25,7 +24,7 @@ const initialChildren = [
     username: 'Joe',
     grade: 4,
     dyslexic: false,
-    image: Hero_3,
+    image: hero_img,
   },
 ];
 
@@ -51,7 +50,6 @@ const RenderParentDashboard = props => {
     setChildren([...children, values]);
     console.log('Values:', values);
     setFormValues(initialFormValues);
-    console.log('Children:', children);
     setModalVisible(false);
 
     const newStudent = {
@@ -64,7 +62,7 @@ const RenderParentDashboard = props => {
 
     axiosWithAuth('web', authState)
       .post('/api/student', newStudent)
-      .then(res => console.log(res))
+      .then(res => console.log('res from add student', res))
       .catch(err => console.log(err));
   };
 

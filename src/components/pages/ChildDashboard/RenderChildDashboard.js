@@ -12,10 +12,6 @@ const RenderChildDashboard = props => {
     props.displayDashboardWelcomeModal
   );
 
-  // const closeWelcomeModal = () => {
-  //   if ()
-  // }
-
   return (
     <div className="dashboard-images">
       <Link to="/mission-dashboard">
