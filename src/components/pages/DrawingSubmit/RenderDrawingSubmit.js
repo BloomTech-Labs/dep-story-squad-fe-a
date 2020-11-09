@@ -65,9 +65,10 @@ const RenderDrawingSubmit = props => {
         })
         .catch(err => console.error(err));
     }
-    props.updateChildRecords(authState, props.student_id, props.records);
+    console.log('payload to updateChild', props.student_id, props.student);
     setUploadModalVisible(true);
     props.drawingCompleted();
+    props.updateChildRecords(authState, props.student_id, props.records);
 
     setTimeout(function() {
       history.push('/mission-dashboard');
@@ -149,7 +150,7 @@ const RenderDrawingSubmit = props => {
 const mapStateToProps = state => {
   console.log('state in drawing submit', state);
   return {
-    records: state.childReducer,
+    student: state.childReducer,
     student_id: state.childReducer.student_id,
     game_mode: state.childReducer.settings.game_mode,
     multiplayer_current_chapter:
