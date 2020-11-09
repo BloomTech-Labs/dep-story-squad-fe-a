@@ -40,7 +40,6 @@ export const childReducer = (state = initialState, { type, payload }) => {
         ...state,
       };
     case UPDATE_CHILD_INFO:
-      console.log('in Child reducer updateChildInfo', payload);
       return {
         ...state,
         student_id: payload.student_id,

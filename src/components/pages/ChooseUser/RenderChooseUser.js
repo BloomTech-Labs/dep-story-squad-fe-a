@@ -11,14 +11,10 @@ import {
 } from '../../../state/actions';
 
 const RenderChooseUser = props => {
-  console.log('PROPS IN RENDER USER', props);
-
   const [children, setChildren] = useState(props.children);
   const history = useHistory();
   const { authState } = useOktaAuth();
-
   const { username } = props;
-  console.log('children in choose user', children);
 
   useEffect(() => {
     props.updateParentInfo(authState);
@@ -36,7 +32,6 @@ const RenderChooseUser = props => {
   }, [username]);
 
   const clickChildButton = child => {
-    console.log('CHILD IN RENDERCHOOSEUSER______->', child);
     props.updateChildInfo(child);
     history.push('/child-dashboard');
   };
@@ -74,7 +69,6 @@ const RenderChooseUser = props => {
 };
 
 const mapStateToProps = state => {
-  console.log('STATE IN RENDERCHOOSEUSER', state);
   return {
     children: state.parentReducer.student_ids,
     account_id: state.parentReducer.account_id,

@@ -50,7 +50,6 @@ const RenderParentDashboard = props => {
     setChildren([...children, values]);
     console.log('Values:', values);
     setFormValues(initialFormValues);
-    console.log(children);
     setModalVisible(false);
 
     const newStudent = {
@@ -63,7 +62,7 @@ const RenderParentDashboard = props => {
 
     axiosWithAuth('web', authState)
       .post('/api/student', newStudent)
-      .then(res => console.log('helloooo', res))
+      .then(res => console.log('res from add student', res))
       .catch(err => console.log(err));
   };
 

@@ -30,7 +30,6 @@ export const updateChildRecords = (authState, childId, records) => {
     axiosWithAuth('web', authState)
       .patch(`/api/student/${childId}`, records)
       .then(res => {
-        console.log('update child records_____>>>>', res);
         dispatch({ type: UPDATE_CHILD_RECORDS });
       })
       .catch(err => console.log('Web Backend Login Error:', err));

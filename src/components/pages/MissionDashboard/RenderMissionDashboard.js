@@ -9,7 +9,6 @@ import { connect } from 'react-redux';
 import { readingCompleted } from '../../../state/actions';
 
 const RenderMissionDashboard = props => {
-  console.log('PROPS IN RENDER MISSION DASH', props);
   const [pdfModalVisible, setPdfModalVisible] = useState(false);
   const [welcomeModalVisible, setWelcomeModalVisible] = useState(false);
   const [greatJobModalVisible, setGreatJobModalVisible] = useState(false);
@@ -175,7 +174,6 @@ const RenderMissionDashboard = props => {
 };
 
 const mapStateToProps = state => {
-  console.log('178->State in renderMissionDashboard', state);
   return {
     reading_complete: state.childReducer.settings.reading_complete,
     writing_complete: state.childReducer.settings.writing_complete,
