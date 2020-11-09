@@ -51,6 +51,7 @@ const RenderChooseUser = props => {
             age. To do this, please add a credit card to your account.
           </h4>
         )}
+
         <div className="buttons">
           <button onClick={() => history.push('/parent-dashboard')}>
             {props.username}

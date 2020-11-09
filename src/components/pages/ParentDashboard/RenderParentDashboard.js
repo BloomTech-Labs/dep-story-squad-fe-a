@@ -9,10 +9,25 @@ import { axiosWithAuth } from '../../../api';
 import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
 import { connect } from 'react-redux';
 import { updateParentInfo } from '../../../state/actions';
+import Hero_3 from '../../common/images/avatars/Hero_3.png';
 
 const { Meta } = Card;
 
-const initialChildren = [];
+const initialChildren = [
+  {
+    username: 'Bob',
+    grade: 5,
+    dyslexic: false,
+    image:
+      'https://www.pinclipart.com/picdir/big/220-2207735_avatars-clipart-generic-user-woman-people-icon-png.png',
+  },
+  {
+    username: 'Joe',
+    grade: 4,
+    dyslexic: false,
+    image: Hero_3,
+  },
+];
 
 const initialFormValues = {
   username: '',
@@ -36,7 +51,7 @@ const RenderParentDashboard = props => {
     setChildren([...children, values]);
     console.log('Values:', values);
     setFormValues(initialFormValues);
-    console.log(children);
+    console.log('Children:', children);
     setModalVisible(false);
 
     const newStudent = {
