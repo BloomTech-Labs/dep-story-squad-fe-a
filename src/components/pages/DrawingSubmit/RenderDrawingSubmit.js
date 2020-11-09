@@ -6,6 +6,8 @@ import { Spin } from 'antd';
 import { connect } from 'react-redux';
 import DisplayUploadFiles from '../../common/DisplayUploadFiles.js';
 import { drawingCompleted } from '../../../state/actions';
+import { updateChildRecords } from '../../../state/actions';
+import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
 
 const RenderDrawingSubmit = props => {
   const [selectedFiles, setSelectedFiles] = useState([]);
@@ -17,6 +19,7 @@ const RenderDrawingSubmit = props => {
   const [successfulUpload, setSuccessfulUpload] = useState(false);
   const [uploadModalVisible, setUploadModalVisible] = useState(false);
   const history = useHistory();
+  const { authState } = useOktaAuth();
 
   const [currentChapter, setCurrentChapter] = useState('');
 
@@ -63,8 +66,13 @@ const RenderDrawingSubmit = props => {
         })
         .catch(err => console.error(err));
     }
+
+    console.log('Payload to Update Child:', props.student_id, props.records);
+    //check this function to make sure it is working
     setUploadModalVisible(true);
     props.drawingCompleted();
+    props.updateChildRecords(authState, props.student_id, props.records);
+
     setTimeout(function() {
       history.push('/mission-dashboard');
     }, 5000);
@@ -150,9 +158,11 @@ const mapStateToProps = state => {
       state.childReducer.settings.multiplayer_current_chapter,
     singleplayer_current_chapter:
       state.childReducer.settings.singleplayer_current_chapter,
+    records: state.childReducer,
   };
 };
 
-export default connect(mapStateToProps, { drawingCompleted })(
-  RenderDrawingSubmit
-);
+export default connect(mapStateToProps, {
+  drawingCompleted,
+  updateChildRecords,
+})(RenderDrawingSubmit);
