@@ -51,7 +51,7 @@ const RenderParentDashboard = props => {
     setChildren([...children, values]);
     console.log('Values:', values);
     setFormValues(initialFormValues);
-    console.log(children);
+    console.log('Children:', children);
     setModalVisible(false);
 
     const newStudent = {

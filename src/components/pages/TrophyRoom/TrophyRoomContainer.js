@@ -5,7 +5,7 @@ import RenderTrophyRoomPage from './RenderTrophyRoomPage';
 const TrophyRoomContainer = () => {
   return (
     <div className="trophy-room-container">
-      <Header title="🏆 Trophy Room" />
+      <Header title="Trophy Room" />
       <RenderTrophyRoomPage />
     </div>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
-import gold_star from '../images/gold_star.png';
-import gray_star from '../images/gray_star.png';
+import gold_star from '../images/gold_coin.png';
+import gray_star from '../images/gray_coin.png';
 
 function getStar(value) {
   switch (value) {
@@ -38,12 +38,10 @@ function getStars(value) {
 export default function Rating({ value }) {
   return (
     <div>
-      <h1>Progress (rack up 5 stars to unlock your next Trophy!</h1>
-
       {getStars(value).map(value => (
         //<img src={`/static/media/${value}.e0ba5ce1.png`} width={100} />
 
-        <img src={getStar(value)} width={100} alt="stars_image" />
+        <img src={getStar(value)} width={40} alt="stars_image" />
       ))}
     </div>
   );

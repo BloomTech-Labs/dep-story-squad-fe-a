@@ -1,15 +1,25 @@
 import React from 'react';
-import no_trophy from '../images/no_trophy.png';
-import gold_trophy from '../images/gold_trophy.png';
+import no_trophy from '../images/no_trophy_PNG.png';
+import bronze_trophy from '../images/bronze_trophy_text.png';
+import silver_trophy from '../images/silver_trophy_text.png';
+import gold_trophy from '../images/gold_trophy_text.png';
 
 function getTrophy(value) {
   switch (value) {
     case no_trophy:
-      return 'https://lh3.googleusercontent.com/proxy/dsS1UL-aKNhSlFWhI6W2ZUhm5i68ekxuo0DLaUqDJn7GzId8DA-1fZfh2bQGx27dCunhAaoLfRcjM2XP4sJMxJCgLoFTbWtPcmTNtQXmEe24';
+      return no_trophy;
+
+    case bronze_trophy:
+      return bronze_trophy;
+
+    case silver_trophy:
+      return silver_trophy;
+
     case gold_trophy:
-      return 'https://png.pngtree.com/png-vector/20190130/ourmid/pngtree-c4d-hd-enterprise-golden-trophy-enterprise-honor-gold-cup-cupenterprise-honorqualificationgolden-png-image_621239.jpg';
+      return gold_trophy;
+
     default:
-      return 'https://lh3.googleusercontent.com/proxy/dsS1UL-aKNhSlFWhI6W2ZUhm5i68ekxuo0DLaUqDJn7GzId8DA-1fZfh2bQGx27dCunhAaoLfRcjM2XP4sJMxJCgLoFTbWtPcmTNtQXmEe24';
+      return no_trophy;
   }
 }
 
@@ -22,6 +32,12 @@ function getTrophies(value) {
     case 0:
       return [no_trophy];
 
+    case 30:
+      return [bronze_trophy];
+
+    case 60:
+      return [silver_trophy];
+
     case 100:
       return [gold_trophy];
 
@@ -33,12 +49,10 @@ function getTrophies(value) {
 export default function Trophy({ value }) {
   return (
     <div>
-      <h1>Current Trophy</h1>
-
       {getTrophies(value).map(value => (
         //<img src={`../images/${value}.png`} width={100} />
 
-        <img src={getTrophy(value)} width={300} alt="trophy_image" />
+        <img src={getTrophy(value)} alt="trophy_image" width={200} />
       ))}
     </div>
   );
