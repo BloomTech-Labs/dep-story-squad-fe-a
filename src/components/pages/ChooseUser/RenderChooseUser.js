@@ -14,7 +14,6 @@ const RenderChooseUser = props => {
   const [children, setChildren] = useState(props.children);
   const history = useHistory();
   const { authState } = useOktaAuth();
-
   const { username } = props;
 
   useEffect(() => {
