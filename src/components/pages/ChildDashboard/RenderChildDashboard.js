@@ -8,10 +8,11 @@ import { Modal } from 'react-responsive-modal';
 import { connect } from 'react-redux';
 
 const RenderChildDashboard = props => {
+  console.log('props in RENDER CHILD DASHBOARD --------->>', props);
   const [welcomeModalVisible, setWelcomeModalVisible] = useState(
     props.displayDashboardWelcomeModal
   );
-
+  console.log(props.displayDashboardWelcomeModal);
   // const closeWelcomeModal = () => {
   //   if ()
   // }
@@ -47,6 +48,7 @@ const RenderChildDashboard = props => {
 };
 
 const mapStateToProps = state => {
+  console.log('state in render chiled****', state);
   return {
     displayDashboardWelcomeModal:
       state.childReducer.settings.displayDashboardWelcomeModal,
