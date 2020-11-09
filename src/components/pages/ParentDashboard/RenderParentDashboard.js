@@ -12,21 +12,7 @@ import { updateParentInfo } from '../../../state/actions';
 
 const { Meta } = Card;
 
-const initialChildren = [
-  {
-    username: 'Bob',
-    grade: 5,
-    dyslexic: false,
-    image:
-      'https://www.pinclipart.com/picdir/big/220-2207735_avatars-clipart-generic-user-woman-people-icon-png.png',
-  },
-  {
-    username: 'Joe',
-    grade: 4,
-    dyslexic: false,
-    image: '../../common/images/avatars/Hero_3.png',
-  },
-];
+const initialChildren = [];
 
 const initialFormValues = {
   username: '',
