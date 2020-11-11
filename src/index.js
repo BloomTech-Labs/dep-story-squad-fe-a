@@ -29,6 +29,7 @@ import { MissionDashboard } from './components/pages/MissionDashboard';
 import { WritingSubmit } from './components/pages/WritingSubmit';
 import { DrawingSubmit } from './components/pages/DrawingSubmit';
 import { ParentSettings } from './components/pages/ParentSettings';
+import { TrophyRoom } from './components/pages/TrophyRoom';
 
 import combineReducers from './state/reducers';
 
@@ -77,6 +78,7 @@ function App() {
         <SecureRoute path="/mission-dashboard" component={MissionDashboard} />
         <SecureRoute path="/writing-submit" component={WritingSubmit} />
         <SecureRoute path="/drawing-submit" component={DrawingSubmit} />
+        <SecureRoute path="/trophy-room" component={TrophyRoom} />
         <Route component={NotFoundPage} />
       </Switch>
     </Security>

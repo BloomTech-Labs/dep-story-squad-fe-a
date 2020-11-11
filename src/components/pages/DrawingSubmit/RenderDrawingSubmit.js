@@ -65,6 +65,9 @@ const RenderDrawingSubmit = props => {
         })
         .catch(err => console.error(err));
     }
+
+    console.log('Payload to Update Child:', props.student_id, props.records);
+    //check this function to make sure it is working
     setUploadModalVisible(true);
     props.drawingCompleted();
     props.updateChildRecords(authState, props.student_id, props.student);
@@ -154,7 +157,7 @@ const mapStateToProps = state => {
     multiplayer_current_chapter:
       state.childReducer.settings.multiplayer_current_chapter,
     singleplayer_current_chapter:
-      state.childReducer.settings.singleplayer_current_chapter,
+      state.childReducer.settings.singleplayer_current_chapter,    
   };
 };
 

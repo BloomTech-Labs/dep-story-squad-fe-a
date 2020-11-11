@@ -19,7 +19,10 @@ const RenderChildDashboard = props => {
       </Link>
       <img src={changeAvatar} alt="Change Avatar" />
       <img src={passport} alt="Passport" />
-      <img src={trophyRoom} alt="Trophy Room" />
+      <Link to="/trophy-room">
+        <img src={trophyRoom} alt="Trophy Room" />
+      </Link>
+
       <Modal
         open={welcomeModalVisible}
         onClose={() => setWelcomeModalVisible(false)}
