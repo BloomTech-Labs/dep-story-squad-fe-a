@@ -1,12 +1,11 @@
 import React from 'react';
-import Trophy from './trophies/TrophyDisplay';
-import readingTrophy from './trophies/ReadingTrophyLogic';
-import Star from './stars/StarDisplay';
-import './TrophyRoom.less';
+import ReadingTrophyLogic from '../trophies/ReadingTrophyLogic';
+import ReadingStarsLogic from '../stars/ReadingStarsLogic';
+import '../TrophyRoom.less';
 
 import { connect } from 'react-redux';
 
-const RenderTrophyRoomPage = props => {
+const RenderReadingTrophyCard = props => {
   const {
     days_count,
     writing_count,
@@ -22,7 +21,10 @@ const RenderTrophyRoomPage = props => {
           <div class="front">
             <div class="front__bkg-photo"></div>
             <div class="front__face-photo">
-              <Trophy className="trophy" value={writing_count * 10} />
+              <ReadingTrophyLogic
+                className="trophy"
+                value={reading_count * 10}
+              />
             </div>
             <div class="front__text">
               <h3 class="front__text-header">Stories: {writing_count * 10}</h3>
@@ -34,11 +36,10 @@ const RenderTrophyRoomPage = props => {
           </div>
           <div class="back">
             <div>
-              <Trophy className="trophy" value={60} />
               <h3 class="back__text-header">
                 Rack up 5 stars to unlock the next Trophy!
               </h3>
-              <Star value={40} />
+              <ReadingStarsLogic value={40} />
             </div>
           </div>
         </div>
@@ -55,4 +56,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, {})(RenderTrophyRoomPage);
+export default connect(mapStateToProps, {})(RenderReadingTrophyCard);

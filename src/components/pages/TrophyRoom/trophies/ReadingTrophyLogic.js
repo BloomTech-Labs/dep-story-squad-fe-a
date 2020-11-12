@@ -4,7 +4,7 @@ import bronze_trophy from '../images/bronze_trophy_text.png';
 import silver_trophy from '../images/silver_trophy_text.png';
 import gold_trophy from '../images/gold_trophy_text.png';
 
-function getTrophy(value) {
+function getReadingTrophy(value) {
   switch (value) {
     case no_trophy:
       return no_trophy;
@@ -23,7 +23,7 @@ function getTrophy(value) {
   }
 }
 
-function getTrophies(value) {
+function getReadingTrophies(value) {
   switch (value) {
     case 0:
       return [no_trophy];
@@ -42,11 +42,11 @@ function getTrophies(value) {
   }
 }
 
-export default function Trophy({ value }) {
+export default function ReadingTrophyLogic({ value }) {
   return (
     <div>
-      {getTrophies(value).map(value => (
-        <img src={getTrophy(value)} alt="trophy_image" width={200} />
+      {getReadingTrophies(value).map(value => (
+        <img src={getReadingTrophy(value)} alt="trophy_image" width={200} />
       ))}
     </div>
   );
