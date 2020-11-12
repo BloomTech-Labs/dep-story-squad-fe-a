@@ -1,4 +1,5 @@
 import React from 'react';
+//import { Header } from '../../../common/';
 import ReadingTrophyLogic from '../trophies/ReadingTrophyLogic';
 import ReadingStarsLogic from '../stars/ReadingStarsLogic';
 import '../TrophyCard.less';
@@ -18,6 +19,7 @@ const RenderReadingTrophyCard = props => {
     <div>
       <div class="outer-div">
         <div class="inner-div">
+          <h1>Reading</h1>
           <div class="front">
             <div class="front__bkg-photo"></div>
             <div class="front__face-photo">

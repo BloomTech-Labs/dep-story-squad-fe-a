@@ -18,6 +18,7 @@ const RenderDrawingTrophyCard = props => {
     <div>
       <div class="outer-div">
         <div class="inner-div">
+          <h1>Drawing</h1>
           <div class="front">
             <div class="front__bkg-photo"></div>
             <div class="front__face-photo">
