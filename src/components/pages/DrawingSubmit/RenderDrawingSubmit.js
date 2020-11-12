@@ -157,7 +157,7 @@ const mapStateToProps = state => {
     multiplayer_current_chapter:
       state.childReducer.settings.multiplayer_current_chapter,
     singleplayer_current_chapter:
-      state.childReducer.settings.singleplayer_current_chapter,    
+      state.childReducer.settings.singleplayer_current_chapter,
   };
 };
 
