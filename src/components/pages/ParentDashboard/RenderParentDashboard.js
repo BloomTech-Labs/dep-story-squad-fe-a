@@ -122,7 +122,7 @@ const RenderParentDashboard = props => {
             <input
               type="number"
               name="pin"
-              min="1000"
+              min="0000"
               max="9999"
               ref={register({ required: true })}
             />
