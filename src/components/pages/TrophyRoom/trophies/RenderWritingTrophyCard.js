@@ -22,10 +22,7 @@ const RenderWritingTrophyCard = props => {
           <div class="front">
             <div class="front__bkg-photo"></div>
             <div class="front__face-photo">
-              <WritingTrophyLogic
-                className="trophy"
-                value={reading_count * 10}
-              />
+              <WritingTrophyLogic className="trophy" value={100} />
             </div>
             <div class="front__text">
               <h3 class="front__text-header">Stories: {writing_count * 10}</h3>
