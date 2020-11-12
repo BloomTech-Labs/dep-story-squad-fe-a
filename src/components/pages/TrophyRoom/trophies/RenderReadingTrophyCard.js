@@ -29,11 +29,7 @@ const RenderReadingTrophyCard = props => {
               />
             </div>
             <div class="front__text">
-              <h3 class="front__text-header">Stories: {writing_count * 10}</h3>
-              <h3 class="front__text-header">Drawings: {drawing_count * 10}</h3>
-              <h3 class="front__text-header">
-                Player Points: {writing_count * 10}
-              </h3>
+              <h3 class="front__text-header">Stories: {reading_count * 10}</h3>
             </div>
           </div>
           <div class="back">
