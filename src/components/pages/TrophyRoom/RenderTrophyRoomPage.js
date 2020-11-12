@@ -2,7 +2,7 @@ import React from 'react';
 import Trophy from './trophies/TrophyDisplay';
 import readingTrophy from './trophies/ReadingTrophyLogic';
 import Star from './stars/StarDisplay';
-import './TrophyRoom.less';
+import './TrophyCard.less';
 
 import { connect } from 'react-redux';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReadingTrophyLogic from '../trophies/ReadingTrophyLogic';
 import ReadingStarsLogic from '../stars/ReadingStarsLogic';
-import '../TrophyRoom.less';
+import '../TrophyCard.less';
 
 import { connect } from 'react-redux';
 

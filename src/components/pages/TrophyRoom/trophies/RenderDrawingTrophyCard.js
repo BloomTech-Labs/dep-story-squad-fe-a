@@ -1,7 +1,7 @@
 import React from 'react';
 import DrawingTrophyLogic from '../trophies/DrawingTrophyLogic';
 import DrawingStarsLogic from '../stars/DrawingStarsLogic';
-import '../TrophyRoom.less';
+import '../TrophyCard.less';
 
 import { connect } from 'react-redux';
 
