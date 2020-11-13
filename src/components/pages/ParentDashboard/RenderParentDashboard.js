@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ChildCard from './ChildCard';
 import { Card } from 'antd';
 import { PlusCircleFilled } from '@ant-design/icons';
@@ -45,6 +45,15 @@ const RenderParentDashboard = props => {
   if (!props.account_id) {
     props.updateParentInfo(authState);
   }
+  useEffect(() => {
+    axiosWithAuth('web', authState)
+      .get('/api/account/students')
+      .then(res => {
+        console.log('Web Backend STUDENT Res', res);
+        setChildren(res.data.students);
+      })
+      .catch(err => console.log('Web Backend STUDENT Error', err));
+  }, []);
 
   const onSubmit = values => {
     setChildren([...children, values]);
@@ -149,6 +158,7 @@ const RenderParentDashboard = props => {
 const mapStateToProps = state => {
   return {
     account_id: state.parentReducer.account_id,
+    username: state.parentReducer.username,
   };
 };
 
