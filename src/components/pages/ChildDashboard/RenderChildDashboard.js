@@ -15,9 +15,9 @@ const RenderChildDashboard = props => {
   console.log('hello', props.student_id);
   const [welcomeModalVisible, setWelcomeModalVisible] = useState(false);
   const [pinCheckVisible, setPinCheckVisible] = useState(true);
+  const [pinError, setPinError] = useState(false);
   const { register, handleSubmit, errors } = useForm();
   const { authState } = useOktaAuth();
-  const history = useHistory();
 
   const onSubmit = values => {
     const student = {
@@ -32,8 +32,7 @@ const RenderChildDashboard = props => {
         setWelcomeModalVisible(true);
       })
       .catch(err => {
-        console.log(err);
-        history.push('/');
+        setPinError(true);
       });
   };
 
@@ -49,7 +48,8 @@ const RenderChildDashboard = props => {
       </Link>
       <Modal
         open={pinCheckVisible}
-        onClose={() => setPinCheckVisible(false)}
+        onClose={() => null}
+        showCloseIcon={false}
         styles={{
           modal: {
             padding: '5%',
@@ -66,17 +66,14 @@ const RenderChildDashboard = props => {
             <input
               type="number"
               name="pin"
-              min="1000"
+              min="0000"
               max="9999"
               ref={register({ required: true })}
             />
           </label>
           <input className="modal-submit-button" type="submit" />
         </form>
-        <h2>
-          If you enter the wrong pin you will have to choose your user and try
-          again.
-        </h2>
+        {errors.pin && <span id="red-error">Pin is Required</span>}
       </Modal>
       <Modal
         open={welcomeModalVisible}
@@ -95,6 +92,27 @@ const RenderChildDashboard = props => {
         <h2>
           Welcome to Story Squad. Accept your mission to start an adventure!
         </h2>
+        {/* <label>
+          Do Not Show This Message Again: &nbsp;
+          <input type="checkbox" value="doNotDisplay"/>
+        </label> */}
+      </Modal>
+      <Modal
+        open={pinError}
+        onClose={() => setPinError(false)}
+        styles={{
+          modal: {
+            padding: '5%',
+            backgroundColor: '#6CEAE6',
+            fontFamily: 'Nunito',
+            fontSize: '28px',
+            textAlign: 'center',
+            fontColor: 'red',
+          },
+        }}
+        center
+      >
+        <h2>Incorrect Pin for that user</h2>
         {/* <label>
           Do Not Show This Message Again: &nbsp;
           <input type="checkbox" value="doNotDisplay"/>
