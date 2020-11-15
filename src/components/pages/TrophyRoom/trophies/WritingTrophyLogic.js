@@ -1,44 +1,31 @@
 import React from 'react';
-import no_trophy from '../images/no_trophy_PNG.png';
-import bronze_trophy from '../images/bronze_trophy_text.png';
-import silver_trophy from '../images/silver_trophy_text.png';
-import gold_trophy from '../images/gold_trophy_text.png';
+
+import writing_trophy_gray from '../images/writing_trophy_gray.png';
+import writing_trophy_full_color from '../images/writing_trophy_full_color.png';
 
 function getWritingTrophy(value) {
   switch (value) {
-    case no_trophy:
-      return no_trophy;
+    case writing_trophy_gray:
+      return writing_trophy_gray;
 
-    case bronze_trophy:
-      return bronze_trophy;
-
-    case silver_trophy:
-      return silver_trophy;
-
-    case gold_trophy:
-      return gold_trophy;
+    case writing_trophy_full_color:
+      return writing_trophy_full_color;
 
     default:
-      return no_trophy;
+      return writing_trophy_gray;
   }
 }
 
 function getWritingTrophies(value) {
   switch (value) {
     case 0:
-      return [no_trophy];
+      return [writing_trophy_gray];
 
     case 30:
-      return [bronze_trophy];
-
-    case 60:
-      return [silver_trophy];
-
-    case 100:
-      return [gold_trophy];
+      return [writing_trophy_full_color];
 
     default:
-      return [no_trophy];
+      return [writing_trophy_gray];
   }
 }
 
@@ -46,7 +33,7 @@ export default function WritingTrophyLogic({ value }) {
   return (
     <div>
       {getWritingTrophies(value).map(value => (
-        <img src={getWritingTrophy(value)} alt="trophy_image" width={200} />
+        <img src={getWritingTrophy(value)} alt="trophy_image" width={350} />
       ))}
     </div>
   );

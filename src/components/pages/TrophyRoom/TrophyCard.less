@@ -1,174 +1,54 @@
-h1 {
-  font-family: Bangers;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 50px;
-  color: #FFFFFF;
-  text-shadow: 5px 0 black, 0 5px black, 5px 0 black, 0 5px black;
-}
-
-.inner-div {
-  height: 450px;
-  max-width: 300px;
-  margin: 0 auto;
-  position: relative;
-}
-
-.outer-div {
-  perspective: 900px;
-  perspective-origin: 50% calc(50% - 18em);
-}
-
-.inner-div {
-  margin: 10px * 5 auto;
-
-  border-radius: 5px;
-  font-weight: 400;
-  color: #071011;
-  font-size: 1rem;
+.trophy_main_container{
+  //background-color:white;
+  align-content: center;
   text-align: center;
-  transition: all 0.6s cubic-bezier(0.8, -0.4, 0.2, 1.7);
-  transform-style: preserve-3d;
-
-  &:hover {
-    transform: rotateY(180deg);
-    background-color: transparent;
-  }
-
-  &:hover .front__face-photo,
-  &:hover .front__footer {
-    opacity: 0;
-  }
 }
 
-.front,
-.back {
-  position: relative;
-  top: 0;
-  left: 0;
-  backface-visibility: hidden;
+.trophy_title{
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 60px;
 }
 
-.front {
-  cursor: pointer;
-  height: 100%;
-  background: #fff;
-  backface-visibility: hidden;
-  border-radius: 5px;
-  box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3),
-    0 0 40px rgba(0, 0, 0, 0.1) inset;
+.progress-bar{
+  margin-top: 30px;
+  text-align: center;
 }
 
-.front__bkg-photo {
-  position: relative;
-  height: 150px;
-  width: 300px;
-  background: url("../../common/images/header_background.png")
-    no-repeat;
-  background-size: cover;
-  backface-visibility: hidden;
-  overflow: hidden;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
-  
-
-  
-
-  &:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-  }
+#reflect-progress-bar {
+  -webkit-box-reflect: below 8px -webkit-gradient(linear, right top, right bottom, from(transparent), color-stop(6%, transparent), to(rgba(255, 255, 255, 0.1)));
 }
 
-.front__face-photo {
-  position: relative;
-  top: -38px;
-  width: 230px;
-  margin: 0 auto;
-  border-radius: 5%;
-  //border: 5px solid #5fe7e3;
-  background-size: contain;
-  backface-visibility: hidden;
-  overflow: hidden;
-  transition: all 0.6s cubic-bezier(0.8, -0.4, 0.2, 1.7);
-  box-shadow: rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3);
-  z-index: 3;
-  
+progress {
+  color: #5fe7e3;
+  border-radius: 20px;
+  height: 20px;
+  width: 250px;
 }
 
-.front__text {
-  position: relative;
-  top: -50px;
-  margin: 0 auto;
-  font-family: "Montserrat";
-  font-size: 10px;
-  backface-visibility: hidden;
-
-  .front__text-header {
-    font-weight: 700;
-    font-family: "Montserrat", sans-serif;
-    text-transform: uppercase;
-    font-size: 15px;
-  }
-
-  .front__text-para {
-    position: relative;
-    top: -15px;
-    color: #000;
-    font-size: 20px;
-    letter-spacing: 0.4px;
-    font-weight: 400;
-    font-family: "Montserrat", sans-serif;
-  }
-
-
-  .front__text-hover {
-    position: relative;
-    top: -50px;
-    font-size: 12px;
-    color: tomato;
-    backface-visibility: hidden;
-
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: .4px;
-
-    //border: 2px solid tomato;
-    padding: 8px 15px;
-    border-radius: 30px;
-
-    background: #5fe7e3
-    ;
-    color: #fff;
-  }
+progress::-webkit-progress-value {
+  background: #5fe7e3;
+  border-radius: 20px;
+  height: 20px;
+  width: 250px;
 }
 
-.back {
-  transform: rotateY(180deg);
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: #5fe7e3;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-
+progress::-moz-progress-bar {
+  background: lightcolor;
+  border-radius: 20px;
+  height: 20px;
+  width: 250px;
 }
 
-.back__text-header{
-    color: white;
-    font-weight: 700;
-    font-family: "Oswald";
-    text-transform: uppercase;
-    font-size: 20px;
-    
+progress::-webkit-progress-value {
+  background: #5fe7e3;
+  border-radius: 20px;
+  height: 20px;
+  width: 250px;
 }
 
+progress::-webkit-progress-bar {
+  background: gray;
+  border-radius: 20px;
+  height: 20px;
+  width: 250px;
+}

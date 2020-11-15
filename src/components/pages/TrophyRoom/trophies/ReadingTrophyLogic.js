@@ -1,44 +1,28 @@
 import React from 'react';
-import no_trophy from '../images/no_trophy_PNG.png';
-import bronze_trophy from '../images/bronze_trophy_text.png';
-import silver_trophy from '../images/silver_trophy_text.png';
-import gold_trophy from '../images/gold_trophy_text.png';
+
+import reading_trophy_gray from '../images/reading_trophy_gray.png';
+import reading_trophy_full_color from '../images/reading_trophy_full_color.png';
 
 function getReadingTrophy(value) {
   switch (value) {
-    case no_trophy:
-      return no_trophy;
+    case reading_trophy_gray:
+      return reading_trophy_gray;
 
-    case bronze_trophy:
-      return bronze_trophy;
-
-    case silver_trophy:
-      return silver_trophy;
-
-    case gold_trophy:
-      return gold_trophy;
-
-    default:
-      return no_trophy;
+    case reading_trophy_full_color:
+      return reading_trophy_full_color;
   }
 }
 
 function getReadingTrophies(value) {
   switch (value) {
     case 0:
-      return [no_trophy];
-
-    case 30:
-      return [bronze_trophy];
-
-    case 60:
-      return [silver_trophy];
+      return [reading_trophy_gray];
 
     case 100:
-      return [gold_trophy];
+      return [reading_trophy_full_color];
 
     default:
-      return [no_trophy];
+      return [reading_trophy_gray];
   }
 }
 
@@ -46,7 +30,7 @@ export default function ReadingTrophyLogic({ value }) {
   return (
     <div>
       {getReadingTrophies(value).map(value => (
-        <img src={getReadingTrophy(value)} alt="trophy_image" width={200} />
+        <img src={getReadingTrophy(value)} alt="trophy_image" width={350} />
       ))}
     </div>
   );
