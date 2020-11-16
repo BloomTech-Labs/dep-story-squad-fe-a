@@ -1,28 +1,30 @@
 import React from 'react';
 
+import week_1_equip_manager_trophy_gray from '../images/week_1_equip_manager_trophy_gray.png';
+import week_1_equip_manager_trophy_color from '../images/week_1_equip_manager_trophy_color.png';
 import reading_trophy_gray from '../images/reading_trophy_gray.png';
 import reading_trophy_full_color from '../images/reading_trophy_full_color.png';
 
 function getReadingTrophy(value) {
   switch (value) {
-    case reading_trophy_gray:
-      return reading_trophy_gray;
+    case week_1_equip_manager_trophy_gray:
+      return week_1_equip_manager_trophy_gray;
 
-    case reading_trophy_full_color:
-      return reading_trophy_full_color;
+    case week_1_equip_manager_trophy_color:
+      return week_1_equip_manager_trophy_color;
   }
 }
 
 function getReadingTrophies(value) {
   switch (value) {
     case 0:
-      return [reading_trophy_gray];
+      return [week_1_equip_manager_trophy_gray];
 
     case 100:
-      return [reading_trophy_full_color];
+      return [week_1_equip_manager_trophy_color];
 
     default:
-      return [reading_trophy_gray];
+      return [week_1_equip_manager_trophy_color];
   }
 }
 

@@ -27,9 +27,7 @@ const RenderDrawingTrophyCard = props => {
             id="reflect-progress-bar"
             max="100"
             value={0}
-          >
-            u
-          </progress>
+          ></progress>
         </div>
       </div>
     </>
