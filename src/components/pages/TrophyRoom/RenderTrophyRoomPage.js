@@ -3,6 +3,8 @@ import Trophy from './trophies/TrophyDisplay';
 import Star from './stars/StarDisplay';
 import './TrophyRoom.less';
 
+import { connect } from 'react-redux';
+
 const RenderTrophyRoomPage = props => {
   return (
     <div>
@@ -11,7 +13,7 @@ const RenderTrophyRoomPage = props => {
           <div class="front">
             <div class="front__bkg-photo"></div>
             <div class="front__face-photo">
-              <Trophy className="trophy" value={100} />
+              <Trophy className="trophy" value={60} />
             </div>
             <div class="front__text">
               <h3 class="front__text-header">Stories: 3</h3>

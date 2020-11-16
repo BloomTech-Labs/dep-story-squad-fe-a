@@ -31,7 +31,6 @@ const RenderParentDashboard = props => {
   if (!props.account_id) {
     props.updateParentInfo(authState);
   }
-
   useEffect(() => {
     axiosWithAuth('web', authState)
       .get('/api/account/students')
@@ -120,7 +119,7 @@ const RenderParentDashboard = props => {
             <input
               type="number"
               name="pin"
-              min="1000"
+              min="0000"
               max="9999"
               ref={register({ required: true })}
             />
@@ -147,6 +146,7 @@ const RenderParentDashboard = props => {
 const mapStateToProps = state => {
   return {
     account_id: state.parentReducer.account_id,
+    username: state.parentReducer.username,
   };
 };
 

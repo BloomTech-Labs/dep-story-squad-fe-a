@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import DisplayUploadFiles from '../../common/DisplayUploadFiles.js';
 import { axiosWithAuth } from '../../../api';
 import { writingCompleted } from '../../../state/actions';
+import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
 
 const RenderWritingSubmit = props => {
   const [selectedFiles, setSelectedFiles] = useState([]);
@@ -19,7 +20,7 @@ const RenderWritingSubmit = props => {
   const [successfulUpload, setSuccessfulUpload] = useState(false);
   const [uploadModalVisible, setUploadModalVisible] = useState(false);
   const history = useHistory();
-
+  const { authState } = useOktaAuth();
   const [currentChapter, setCurrentChapter] = useState('');
 
   useEffect(() => {
@@ -59,9 +60,9 @@ const RenderWritingSubmit = props => {
     const data = {
       s3_dir: s3Directory,
       get_complexity_score: 1,
-      star_rating: 0,
+      star_rating: 1,
     };
-    await axiosWithAuth('ds')
+    await axiosWithAuth('ds', authState)
       .post('/HTR/image/s3_dir', data)
       .then(res => {
         console.log('DS Response', res);
