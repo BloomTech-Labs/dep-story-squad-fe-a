@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ChildCard from './ChildCard';
 import { Card } from 'antd';
 import { PlusCircleFilled } from '@ant-design/icons';
@@ -9,24 +9,10 @@ import { axiosWithAuth } from '../../../api';
 import { useOktaAuth } from '@okta/okta-react/dist/OktaContext';
 import { connect } from 'react-redux';
 import { updateParentInfo } from '../../../state/actions';
-import hero_img from '../../common/images/avatars/Hero_3.png';
+import placeholder_portrait from '../../common/images/avatars/placeholder_portrait.png';
 const { Meta } = Card;
 
-const initialChildren = [
-  {
-    username: 'Bob',
-    grade: 5,
-    dyslexic: false,
-    image:
-      'https://www.pinclipart.com/picdir/big/220-2207735_avatars-clipart-generic-user-woman-people-icon-png.png',
-  },
-  {
-    username: 'Joe',
-    grade: 4,
-    dyslexic: false,
-    image: hero_img,
-  },
-];
+const initialChildren = [];
 
 const initialFormValues = {
   username: '',
@@ -45,6 +31,15 @@ const RenderParentDashboard = props => {
   if (!props.account_id) {
     props.updateParentInfo(authState);
   }
+  useEffect(() => {
+    axiosWithAuth('web', authState)
+      .get('/api/account/students')
+      .then(res => {
+        console.log('Web Backend STUDENT Res', res);
+        setChildren(res.data.students);
+      })
+      .catch(err => console.log('Web Backend STUDENT Error', err));
+  }, []);
 
   const onSubmit = values => {
     setChildren([...children, values]);
@@ -62,7 +57,9 @@ const RenderParentDashboard = props => {
 
     axiosWithAuth('web', authState)
       .post('/api/student', newStudent)
-      .then(res => console.log('res from add student', res))
+      .then(res => {
+        console.log('res from add student', res);
+      })
       .catch(err => console.log(err));
   };
 
@@ -149,6 +146,7 @@ const RenderParentDashboard = props => {
 const mapStateToProps = state => {
   return {
     account_id: state.parentReducer.account_id,
+    username: state.parentReducer.username,
   };
 };
 

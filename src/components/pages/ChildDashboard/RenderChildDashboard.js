@@ -18,7 +18,6 @@ const RenderChildDashboard = props => {
   const [pinError, setPinError] = useState(false);
   const { register, handleSubmit, errors } = useForm();
   const { authState } = useOktaAuth();
-  const history = useHistory();
 
   const onSubmit = values => {
     const student = {
