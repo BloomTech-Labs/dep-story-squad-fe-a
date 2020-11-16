@@ -23,10 +23,6 @@ function getTrophy(value) {
   }
 }
 
-//Why does it work when using static url taken from elements log
-//return "/static/media/no_trophy.6bb7273d.png";
-//return "/static/media/gold_trophy.81319b36.png";
-
 function getTrophies(value) {
   switch (value) {
     case 0:
@@ -50,8 +46,6 @@ export default function Trophy({ value }) {
   return (
     <div>
       {getTrophies(value).map(value => (
-        //<img src={`../images/${value}.png`} width={100} />
-
         <img src={getTrophy(value)} alt="trophy_image" width={200} />
       ))}
     </div>

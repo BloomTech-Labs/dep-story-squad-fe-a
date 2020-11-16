@@ -1,11 +1,20 @@
 import React from 'react';
 import Trophy from './trophies/TrophyDisplay';
+import readingTrophy from './trophies/ReadingTrophyLogic';
 import Star from './stars/StarDisplay';
-import './TrophyRoom.less';
+import './TrophyCard.less';
 
 import { connect } from 'react-redux';
 
 const RenderTrophyRoomPage = props => {
+  const {
+    days_count,
+    writing_count,
+    reading_count,
+    drawing_count,
+  } = props.student.records;
+  console.log(days_count, writing_count, reading_count, drawing_count);
+
   return (
     <div>
       <div class="outer-div">
@@ -13,17 +22,19 @@ const RenderTrophyRoomPage = props => {
           <div class="front">
             <div class="front__bkg-photo"></div>
             <div class="front__face-photo">
-              <Trophy className="trophy" value={60} />
+              <Trophy className="trophy" value={writing_count * 10} />
             </div>
             <div class="front__text">
-              <h3 class="front__text-header">Stories: 3</h3>
-              <h3 class="front__text-header">Drawings: 3</h3>
-              <h3 class="front__text-header">Player Points: 30</h3>
+              <h3 class="front__text-header">Stories: {writing_count * 10}</h3>
+              <h3 class="front__text-header">Drawings: {drawing_count * 10}</h3>
+              <h3 class="front__text-header">
+                Player Points: {writing_count * 10}
+              </h3>
             </div>
           </div>
           <div class="back">
             <div>
-              <Trophy className="trophy" value={0} />
+              <Trophy className="trophy" value={60} />
               <h3 class="back__text-header">
                 Rack up 5 stars to unlock the next Trophy!
               </h3>
@@ -36,4 +47,12 @@ const RenderTrophyRoomPage = props => {
   );
 };
 
-export default RenderTrophyRoomPage;
+const mapStateToProps = state => {
+  console.log('State in Trophy Room:', state);
+  return {
+    student: state.childReducer,
+    student_id: state.childReducer.student_id,
+  };
+};
+
+export default connect(mapStateToProps, {})(RenderTrophyRoomPage);
