@@ -4,6 +4,8 @@ import '../../TrophiesStyles.less';
 
 import { connect } from 'react-redux';
 
+const MINIMUM = 3;
+
 const RenderWeekTwoTrophy = props => {
   const {
     days_count,
@@ -20,7 +22,7 @@ const RenderWeekTwoTrophy = props => {
           <p className="trophy_title">Week 2</p>
           <WeekTwoTrophyLogic
             className="trophy"
-            value={reading_count + writing_count + drawing_count}
+            value={reading_count + writing_count + drawing_count - MINIMUM}
           />
         </div>
 
@@ -29,7 +31,7 @@ const RenderWeekTwoTrophy = props => {
             className="progress-bar"
             id="reflect-progress-bar"
             max="6"
-            value={reading_count + writing_count + drawing_count}
+            value={reading_count + writing_count + drawing_count - MINIMUM}
           ></progress>
         </div>
       </div>
