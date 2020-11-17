@@ -1,10 +1,10 @@
 import React from 'react';
-import WritingTrophyLogic from '../trophies/WritingTrophyLogic';
-import '../TrophyCard.less';
+import WeekTwoTrophyLogic from '../../trophies/WeekTwoTrophy/WeekTwoTrophyLogic';
+import '../../TrophiesStyles.less';
 
 import { connect } from 'react-redux';
 
-const RenderWritingTrophyCard = props => {
+const RenderWeekTwoTrophy = props => {
   const {
     days_count,
     writing_count,
@@ -16,20 +16,21 @@ const RenderWritingTrophyCard = props => {
   return (
     <>
       <div className="trophy_main_container">
-        <div className="writing_trophy">
+        <div className="reading_trophy">
           <p className="trophy_title">Week 2</p>
-          <WritingTrophyLogic className="trophy" value={100} />
+          <WeekTwoTrophyLogic
+            className="trophy"
+            value={reading_count + writing_count + drawing_count}
+          />
         </div>
 
         <div className="progress-bar">
           <progress
             className="progress-bar"
             id="reflect-progress-bar"
-            max="100"
-            value={30}
-          >
-            u
-          </progress>
+            max="6"
+            value={reading_count + writing_count + drawing_count}
+          ></progress>
         </div>
       </div>
     </>
@@ -44,4 +45,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, {})(RenderWritingTrophyCard);
+export default connect(mapStateToProps, {})(RenderWeekTwoTrophy);
