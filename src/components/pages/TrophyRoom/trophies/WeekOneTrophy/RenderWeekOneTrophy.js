@@ -1,7 +1,8 @@
 import React from 'react';
 //import { Header } from '../../../common/';
-import ReadingTrophyLogic from '../trophies/ReadingTrophyLogic';
-import '../TrophyCard.less';
+//import ReadingTrophyLogic from '../trophies/ReadingTrophyLogic';
+import WeekOneTrophyLogic from '../../trophies/WeekOneTrophy/WeekOneTrophyLogic';
+import '../../TrophiesStyles.less';
 
 import { connect } from 'react-redux';
 
@@ -14,29 +15,23 @@ const RenderReadingTrophyCard = props => {
   } = props.student.records;
   console.log(days_count, writing_count, reading_count, drawing_count);
 
-  ///create checkTotal function to set count value to be 100 if it is over 100
-  //function checkTotal(props){
-  // let count_value = reading_count.value
-  //  if (count_value < 100){
-  //    count_value = 100;
-
-  //  }
-  //}
-
   return (
     <>
       <div className="trophy_main_container">
         <div className="reading_trophy">
           <p className="trophy_title">Week 1</p>
-          <ReadingTrophyLogic className="trophy" value={100} />
+          <WeekOneTrophyLogic
+            className="trophy"
+            value={reading_count + writing_count + drawing_count}
+          />
         </div>
 
         <div className="progress-bar">
           <progress
             className="progress-bar"
             id="reflect-progress-bar"
-            max="100"
-            value={60}
+            max="3"
+            value={reading_count + writing_count + drawing_count}
           ></progress>
         </div>
       </div>

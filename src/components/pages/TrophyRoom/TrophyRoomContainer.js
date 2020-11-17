@@ -1,8 +1,8 @@
 import React from 'react';
 import { Header } from '../../common/';
-import RenderReadingTrophyCard from './trophies/RenderReadingTrophyCard';
-import RenderWritingTrophyCard from './trophies/RenderWritingTrophyCard';
-import RenderDrawingTrophyCard from './trophies/RenderDrawingTrophyCard';
+import RenderWeekOneTrophy from './trophies/WeekOneTrophy/RenderWeekOneTrophy';
+import RenderWeekTwoTrophy from './trophies/WeekTwoTrophy/RenderWeekTwoTrophy';
+import RenderWeekThreeTrophy from './trophies/WeekThreeTrophy/RenderWeekThreeTrophy';
 import './TrophyRoomContainer.less';
 
 const TrophyRoomContainer = () => {
@@ -10,9 +10,9 @@ const TrophyRoomContainer = () => {
     <div className="trophy-room-container">
       <Header title="Trophy Room" />
       <div className="trophy-cards-container">
-        <RenderReadingTrophyCard />
-        <RenderWritingTrophyCard />
-        <RenderDrawingTrophyCard />
+        <RenderWeekOneTrophy />
+        <RenderWeekTwoTrophy />
+        <RenderWeekThreeTrophy />
       </div>
     </div>
   );
