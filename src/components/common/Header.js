@@ -44,6 +44,7 @@ const Header = props => {
         <Link to="/child-dashboard">Home</Link>
         <Link to="/">Help</Link>
         <Link to="/">Change User</Link>
+        <Link to="/trophy-room">Trophy Room</Link>
         <Link to="/">Logout</Link>
       </Drawer>
       <h1>{props.title}</h1>
