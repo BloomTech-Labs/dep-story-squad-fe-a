@@ -14,15 +14,10 @@ function getWeekTwoTrophy(value) {
 }
 
 function getWeekTwoTrophies(value) {
-  switch (value) {
-    case 0:
-      return [week_2_trophy_placeholder_gray];
-
-    case 6:
-      return [week_2_trophy_placeholder_color];
-
-    default:
-      return [week_2_trophy_placeholder_gray];
+  if (value >= 6) {
+    return [week_2_trophy_placeholder_color];
+  } else {
+    return [week_2_trophy_placeholder_gray];
   }
 }
 
