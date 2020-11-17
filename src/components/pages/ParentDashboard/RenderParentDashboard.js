@@ -63,8 +63,6 @@ const RenderParentDashboard = props => {
       .catch(err => console.log(err));
   };
 
-  console.log('Account ID from Redux Store:', props.account_id);
-
   return (
     <div>
       <h1>Dashboard</h1>
