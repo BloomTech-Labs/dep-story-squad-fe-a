@@ -15,29 +15,23 @@ const RenderReadingTrophyCard = props => {
   } = props.student.records;
   console.log(days_count, writing_count, reading_count, drawing_count);
 
-  ///create checkTotal function to set count value to be 100 if it is over 100
-  //function checkTotal(props){
-  // let count_value = reading_count.value
-  //  if (count_value < 100){
-  //    count_value = 100;
-
-  //  }
-  //}
-
   return (
     <>
       <div className="trophy_main_container">
         <div className="reading_trophy">
           <p className="trophy_title">Week 1</p>
-          <WeekOneTrophyLogic className="trophy" value={days_count * 20} />
+          <WeekOneTrophyLogic
+            className="trophy"
+            value={reading_count + writing_count + drawing_count}
+          />
         </div>
 
         <div className="progress-bar">
           <progress
             className="progress-bar"
             id="reflect-progress-bar"
-            max="5"
-            value={days_count}
+            max="3"
+            value={reading_count + writing_count + drawing_count}
           ></progress>
         </div>
       </div>

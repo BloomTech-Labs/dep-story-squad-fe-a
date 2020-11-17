@@ -18,7 +18,7 @@ function getWeekTwoTrophies(value) {
     case 0:
       return [week_2_trophy_placeholder_gray];
 
-    case 120:
+    case 6:
       return [week_2_trophy_placeholder_color];
 
     default:

@@ -18,7 +18,7 @@ function getWeekOneTrophies(value) {
     case 0:
       return [week_1_equip_manager_trophy_gray];
 
-    case 100:
+    case 3:
       return [week_1_equip_manager_trophy_color];
 
     default:

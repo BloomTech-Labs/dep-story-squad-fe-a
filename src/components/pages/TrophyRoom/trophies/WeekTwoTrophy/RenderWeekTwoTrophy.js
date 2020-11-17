@@ -18,15 +18,18 @@ const RenderWeekTwoTrophy = props => {
       <div className="trophy_main_container">
         <div className="reading_trophy">
           <p className="trophy_title">Week 2</p>
-          <WeekTwoTrophyLogic className="trophy" value={writing_count * 20} />
+          <WeekTwoTrophyLogic
+            className="trophy"
+            value={reading_count + writing_count + drawing_count}
+          />
         </div>
 
         <div className="progress-bar">
           <progress
             className="progress-bar"
             id="reflect-progress-bar"
-            max="120"
-            value={writing_count * 20}
+            max="6"
+            value={reading_count + writing_count + drawing_count}
           ></progress>
         </div>
       </div>

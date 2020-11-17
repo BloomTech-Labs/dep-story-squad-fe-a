@@ -18,7 +18,7 @@ function getWeekThreeTrophies(value) {
     case 0:
       return [week_3_trophy_placeholder_gray];
 
-    case 140:
+    case 9:
       return [week_3_trophy_placeholder_color];
 
     default:
