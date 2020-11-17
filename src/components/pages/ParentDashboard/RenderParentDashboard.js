@@ -69,7 +69,7 @@ const RenderParentDashboard = props => {
     <div>
       <h1>Dashboard</h1>
       {children.map(child => (
-        <ChildCard name={child.username} image={child.image} />
+        <ChildCard name={child.username} image={placeholder_portrait} />
       ))}
 
       <Card onClick={() => setModalVisible(true)}>
