@@ -14,15 +14,10 @@ function getWeekThreeTrophy(value) {
 }
 
 function getWeekThreeTrophies(value) {
-  switch (value) {
-    case 0:
-      return [week_3_trophy_placeholder_gray];
-
-    case 9:
-      return [week_3_trophy_placeholder_color];
-
-    default:
-      return [week_3_trophy_placeholder_gray];
+  if (value >= 9) {
+    return [week_3_trophy_placeholder_color];
+  } else {
+    return [week_3_trophy_placeholder_gray];
   }
 }
 

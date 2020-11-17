@@ -14,15 +14,10 @@ function getWeekOneTrophy(value) {
 }
 
 function getWeekOneTrophies(value) {
-  switch (value) {
-    case 0:
-      return [week_1_equip_manager_trophy_gray];
-
-    case 3:
-      return [week_1_equip_manager_trophy_color];
-
-    default:
-      return [week_1_equip_manager_trophy_gray];
+  if (value >= 3) {
+    return [week_1_equip_manager_trophy_color];
+  } else {
+    return [week_1_equip_manager_trophy_gray];
   }
 }
 
